@@ -51,8 +51,13 @@
 		608801191EC987E800E07EFB /* PlayViewTopTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 608801151EC987E800E07EFB /* PlayViewTopTool.swift */; };
 		6088011A1EC987E800E07EFB /* TimeSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 608801161EC987E800E07EFB /* TimeSheetView.swift */; };
 		6088011B1EC987E800E07EFB /* VideoPlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 608801171EC987E800E07EFB /* VideoPlayView.swift */; };
+		6088011D1EC98AFA00E07EFB /* Resource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6088011C1EC98AFA00E07EFB /* Resource.bundle */; };
+		6088011F1EC990D400E07EFB /* YZPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6088011E1EC990D400E07EFB /* YZPlayer.swift */; };
+		60A276991EC9AED2008DC40D /* UINavigationController+Rotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A276981EC9AED2008DC40D /* UINavigationController+Rotation.swift */; };
+		60A2769B1EC9AFC0008DC40D /* UITabBarController+Rotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A2769A1EC9AFC0008DC40D /* UITabBarController+Rotation.swift */; };
+		60A2769E1EC9B050008DC40D /* UILable+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A2769C1EC9B050008DC40D /* UILable+Extension.swift */; };
+		60A2769F1EC9B050008DC40D /* UIView+Position.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A2769D1EC9B050008DC40D /* UIView+Position.swift */; };
 		60DDC1501EC5B86B00559000 /* CommonTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DDC14F1EC5B86B00559000 /* CommonTools.swift */; };
-		60DDC1521EC5B8E300559000 /* UIView+Position.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DDC1511EC5B8E300559000 /* UIView+Position.swift */; };
 		60DDC1791EC5BC2D00559000 /* Constraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DDC1561EC5BC2D00559000 /* Constraint.swift */; };
 		60DDC17A1EC5BC2D00559000 /* ConstraintAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DDC1571EC5BC2D00559000 /* ConstraintAttributes.swift */; };
 		60DDC17B1EC5BC2D00559000 /* ConstraintConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DDC1581EC5BC2D00559000 /* ConstraintConfig.swift */; };
@@ -88,7 +93,6 @@
 		60DDC1991EC5BC2D00559000 /* LayoutConstraintItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DDC1761EC5BC2D00559000 /* LayoutConstraintItem.swift */; };
 		60DDC19A1EC5BC2D00559000 /* UILayoutSupport+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DDC1781EC5BC2D00559000 /* UILayoutSupport+Extensions.swift */; };
 		60DDC1A01EC5BD5100559000 /* ConfigFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DDC19F1EC5BD5100559000 /* ConfigFile.swift */; };
-		60DDC1A21EC5BDCF00559000 /* UILable+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DDC1A11EC5BDCF00559000 /* UILable+Extension.swift */; };
 		60DDC1CE1EC5BF4A00559000 /* YYCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 60DDC1A81EC5BF4A00559000 /* YYCache.m */; };
 		60DDC1CF1EC5BF4A00559000 /* YYDiskCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 60DDC1AA1EC5BF4A00559000 /* YYDiskCache.m */; };
 		60DDC1D01EC5BF4A00559000 /* YYKVStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 60DDC1AC1EC5BF4A00559000 /* YYKVStorage.m */; };
@@ -198,8 +202,13 @@
 		608801151EC987E800E07EFB /* PlayViewTopTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayViewTopTool.swift; sourceTree = "<group>"; };
 		608801161EC987E800E07EFB /* TimeSheetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeSheetView.swift; sourceTree = "<group>"; };
 		608801171EC987E800E07EFB /* VideoPlayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoPlayView.swift; sourceTree = "<group>"; };
+		6088011C1EC98AFA00E07EFB /* Resource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Resource.bundle; sourceTree = "<group>"; };
+		6088011E1EC990D400E07EFB /* YZPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YZPlayer.swift; sourceTree = "<group>"; };
+		60A276981EC9AED2008DC40D /* UINavigationController+Rotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Rotation.swift"; sourceTree = "<group>"; };
+		60A2769A1EC9AFC0008DC40D /* UITabBarController+Rotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITabBarController+Rotation.swift"; sourceTree = "<group>"; };
+		60A2769C1EC9B050008DC40D /* UILable+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILable+Extension.swift"; sourceTree = "<group>"; };
+		60A2769D1EC9B050008DC40D /* UIView+Position.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Position.swift"; sourceTree = "<group>"; };
 		60DDC14F1EC5B86B00559000 /* CommonTools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonTools.swift; sourceTree = "<group>"; };
-		60DDC1511EC5B8E300559000 /* UIView+Position.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Position.swift"; sourceTree = "<group>"; };
 		60DDC1561EC5BC2D00559000 /* Constraint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constraint.swift; sourceTree = "<group>"; };
 		60DDC1571EC5BC2D00559000 /* ConstraintAttributes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstraintAttributes.swift; sourceTree = "<group>"; };
 		60DDC1581EC5BC2D00559000 /* ConstraintConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstraintConfig.swift; sourceTree = "<group>"; };
@@ -236,7 +245,6 @@
 		60DDC1771EC5BC2D00559000 /* SnapKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SnapKit.h; sourceTree = "<group>"; };
 		60DDC1781EC5BC2D00559000 /* UILayoutSupport+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILayoutSupport+Extensions.swift"; sourceTree = "<group>"; };
 		60DDC19F1EC5BD5100559000 /* ConfigFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigFile.swift; sourceTree = "<group>"; };
-		60DDC1A11EC5BDCF00559000 /* UILable+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILable+Extension.swift"; sourceTree = "<group>"; };
 		60DDC1A71EC5BF4A00559000 /* YYCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYCache.h; sourceTree = "<group>"; };
 		60DDC1A81EC5BF4A00559000 /* YYCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYCache.m; sourceTree = "<group>"; };
 		60DDC1A91EC5BF4A00559000 /* YYDiskCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYDiskCache.h; sourceTree = "<group>"; };
@@ -515,21 +523,33 @@
 		608801131EC987E800E07EFB /* YZPlayer */ = {
 			isa = PBXGroup;
 			children = (
-				608801141EC987E800E07EFB /* PlayViewBottomTool.swift */,
-				608801151EC987E800E07EFB /* PlayViewTopTool.swift */,
-				608801161EC987E800E07EFB /* TimeSheetView.swift */,
+				60A276971EC9AE88008DC40D /* Category */,
+				6088011E1EC990D400E07EFB /* YZPlayer.swift */,
 				608801171EC987E800E07EFB /* VideoPlayView.swift */,
+				608801151EC987E800E07EFB /* PlayViewTopTool.swift */,
+				608801141EC987E800E07EFB /* PlayViewBottomTool.swift */,
+				608801161EC987E800E07EFB /* TimeSheetView.swift */,
+				6088011C1EC98AFA00E07EFB /* Resource.bundle */,
 			);
 			name = YZPlayer;
 			path = ../YZPlayer;
+			sourceTree = "<group>";
+		};
+		60A276971EC9AE88008DC40D /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				60A2769A1EC9AFC0008DC40D /* UITabBarController+Rotation.swift */,
+				60A276981EC9AED2008DC40D /* UINavigationController+Rotation.swift */,
+				60A2769C1EC9B050008DC40D /* UILable+Extension.swift */,
+				60A2769D1EC9B050008DC40D /* UIView+Position.swift */,
+			);
+			path = Category;
 			sourceTree = "<group>";
 		};
 		60DDC14E1EC5B85F00559000 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
 				60DDC14F1EC5B86B00559000 /* CommonTools.swift */,
-				60DDC1511EC5B8E300559000 /* UIView+Position.swift */,
-				60DDC1A11EC5BDCF00559000 /* UILable+Extension.swift */,
 				6002A9141EC734D200C55FD5 /* UIImage+Extension.swift */,
 			);
 			path = Tools;
@@ -769,6 +789,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				60DDC1FE1EC5CB8C00559000 /* video in Resources */,
+				6088011D1EC98AFA00E07EFB /* Resource.bundle in Resources */,
 				606FF5C31EC5A79E0052DBAE /* LaunchScreen.storyboard in Resources */,
 				606FF5C01EC5A79E0052DBAE /* Assets.xcassets in Resources */,
 				6002A90C1EC72E7300C55FD5 /* MJRefresh.bundle in Resources */,
@@ -799,6 +820,7 @@
 				60DDC1801EC5BC2D00559000 /* ConstraintInsetTarget.swift in Sources */,
 				60DDC18C1EC5BC2D00559000 /* ConstraintMakerRelatable.swift in Sources */,
 				60DDC1D71EC5BF4A00559000 /* UIImageView+YYWebImage.m in Sources */,
+				6088011F1EC990D400E07EFB /* YZPlayer.swift in Sources */,
 				60DDC1901EC5BC2D00559000 /* ConstraintPriorityTarget.swift in Sources */,
 				60DDC1DE1EC5BF4A00559000 /* YYWebImageManager.m in Sources */,
 				6088011A1EC987E800E07EFB /* TimeSheetView.swift in Sources */,
@@ -814,9 +836,10 @@
 				6002A9101EC72E7300C55FD5 /* UIScrollView+MJRefresh.m in Sources */,
 				6002A8C81EC72CFA00C55FD5 /* YZVideoRecommendMediaCell.swift in Sources */,
 				6002A9021EC72E7300C55FD5 /* MJRefreshHeader.m in Sources */,
-				60DDC1521EC5B8E300559000 /* UIView+Position.swift in Sources */,
 				60DDC18A1EC5BC2D00559000 /* ConstraintMakerFinalizable.swift in Sources */,
+				60A2769B1EC9AFC0008DC40D /* UITabBarController+Rotation.swift in Sources */,
 				60DDC1D21EC5BF4A00559000 /* _YYWebImageSetter.m in Sources */,
+				60A2769F1EC9B050008DC40D /* UIView+Position.swift in Sources */,
 				6002A9091EC72E7300C55FD5 /* MJRefreshGifHeader.m in Sources */,
 				60DDC1851EC5BC2D00559000 /* ConstraintLayoutSupport.swift in Sources */,
 				60DDC1A01EC5BD5100559000 /* ConfigFile.swift in Sources */,
@@ -852,16 +875,17 @@
 				60DDC1DC1EC5BF4A00559000 /* YYSpriteSheetImage.m in Sources */,
 				60DDC1791EC5BC2D00559000 /* Constraint.swift in Sources */,
 				6002A8CE1EC72D6E00C55FD5 /* YZVideoToolBar.swift in Sources */,
+				60A2769E1EC9B050008DC40D /* UILable+Extension.swift in Sources */,
 				6002A8C51EC72CFA00C55FD5 /* YZVideoAuthorInfoCell.swift in Sources */,
 				60DDC1501EC5B86B00559000 /* CommonTools.swift in Sources */,
 				6002A8C71EC72CFA00C55FD5 /* YZVideoInfoCell.swift in Sources */,
 				60DDC1821EC5BC2D00559000 /* ConstraintLayoutGuide+Extensions.swift in Sources */,
 				60DDC1D91EC5BF4A00559000 /* YYFrameImage.m in Sources */,
+				60A276991EC9AED2008DC40D /* UINavigationController+Rotation.swift in Sources */,
 				60DDC1891EC5BC2D00559000 /* ConstraintMakerExtendable.swift in Sources */,
 				6002A8CA1EC72CFA00C55FD5 /* YZVideoUserInputCell.swift in Sources */,
 				6002A9051EC72E7300C55FD5 /* MJRefreshAutoStateFooter.m in Sources */,
 				60DDC1D41EC5BF4A00559000 /* MKAnnotationView+YYWebImage.m in Sources */,
-				60DDC1A21EC5BDCF00559000 /* UILable+Extension.swift in Sources */,
 				6002A8CD1EC72D6E00C55FD5 /* YZVideoCommentView.swift in Sources */,
 				6002A8AC1EC72C2900C55FD5 /* YZVideoListViewModel.swift in Sources */,
 				60DDC1841EC5BC2D00559000 /* ConstraintLayoutGuideDSL.swift in Sources */,

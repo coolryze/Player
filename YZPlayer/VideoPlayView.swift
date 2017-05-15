@@ -533,7 +533,7 @@ class VideoPlayView: UIView {
     
     fileprivate lazy var backgroundView: UIImageView = {
         let backgroundView = UIImageView(frame: CGRect(x: 0, y: 0, width: self.width, height: self.height-clearY))
-        backgroundView.image = UIImage(named: "bg_media_default.jpg")
+        backgroundView.image = YZPlayerImage(named: "video_bg_media_default")
         return backgroundView
     }()
     
@@ -561,15 +561,15 @@ class VideoPlayView: UIView {
         let playBtn = UIButton(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
         playBtn.centerX = self.centerX
         playBtn.centerY = self.centerY - clearY*0.5
-        playBtn.setImage(UIImage(named: "video_play_small"), for: UIControlState())
-        playBtn.setImage(UIImage(named: "video_pause_small"), for: .selected)
+        playBtn.setImage(YZPlayerImage(named: "video_play_small"), for: UIControlState())
+        playBtn.setImage(YZPlayerImage(named: "video_pause_small"), for: .selected)
         playBtn.addTarget(self, action: #selector(self.clickPlayBtn), for: .touchUpInside)
         return playBtn
     }()
     
     fileprivate lazy var backBtn: UIButton = {
         let backBtn = UIButton(frame: CGRect(x: 5, y: 22, width: 40, height: 40))
-        backBtn.setImage(UIImage(named: "video_back"), for: UIControlState())
+        backBtn.setImage(YZPlayerImage(named: "video_back"), for: UIControlState())
         backBtn.addTarget(self, action: #selector(self.clickBackBtn), for: .touchUpInside)
         return backBtn
     }()
@@ -715,8 +715,8 @@ extension VideoPlayView {
             self.playViewTopTool.setupFrame(isFullScreen: isFullScreen)
             self.playBtn.centerX = self.centerX
             self.playBtn.centerY = self.centerY - clearY
-            self.playBtn.setImage(UIImage(named: "video_play_small"), for: UIControlState())
-            self.playBtn.setImage(UIImage(named: "video_pause_small"), for: .selected)
+            self.playBtn.setImage(YZPlayerImage(named: "video_play_small"), for: UIControlState())
+            self.playBtn.setImage(YZPlayerImage(named: "video_pause_small"), for: .selected)
             self.backBtn.isHidden = false
             self.timeView.center = CGPoint(x: self.width*0.5, y: (self.height-clearY)*0.5)
         } else {
@@ -738,8 +738,8 @@ extension VideoPlayView {
                 self.playViewTopTool.frame = CGRect(x: 0, y: 0, width: self.width, height: 64)
                 self.playViewTopTool.setupFrame(isFullScreen: isFullScreen)
                 self.playBtn.center = self.center
-                self.playBtn.setImage(UIImage(named: "video_play"), for: UIControlState())
-                self.playBtn.setImage(UIImage(named: "video_pause"), for: .selected)
+                self.playBtn.setImage(YZPlayerImage(named: "video_play"), for: UIControlState())
+                self.playBtn.setImage(YZPlayerImage(named: "video_pause"), for: .selected)
                 self.backBtn.isHidden = true
                 self.timeView.center = CGPoint(x: self.width*0.5, y: self.height*0.5)
             }
@@ -759,9 +759,9 @@ extension VideoPlayView {
     
     func getOrientation(_ orientation: UIInterfaceOrientation) -> CGAffineTransform {
         if orientation == .landscapeLeft {
-            return CGAffineTransform(rotationAngle: CGFloat(-M_PI_2))
+            return CGAffineTransform(rotationAngle: CGFloat(-Double.pi/2))
         } else if orientation == .landscapeRight {
-            return CGAffineTransform(rotationAngle: CGFloat(M_PI_2))
+            return CGAffineTransform(rotationAngle: CGFloat(Double.pi/2))
         }
         return CGAffineTransform.identity
     }

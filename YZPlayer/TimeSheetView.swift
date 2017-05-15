@@ -15,9 +15,9 @@ class TimeSheetView: UIView {
     var isLeft: Bool = true {
         didSet {
             if isLeft {
-                sheetStateImageView.image = UIImage(named: "progress_left")
+                sheetStateImageView.image = YZPlayerImage(named: "video_progress_left")
             } else {
-                sheetStateImageView.image = UIImage(named: "progress_right")
+                sheetStateImageView.image = YZPlayerImage(named: "video_progress_right")
             }
         }
     }
@@ -59,7 +59,7 @@ class TimeSheetView: UIView {
     
     private lazy var sheetStateImageView: UIImageView = {
         let sheetStateImageView = UIImageView(frame: CGRect(x: 54, y: 12, width: 43, height: 25))
-        sheetStateImageView.image = UIImage(named: "progress_left")
+        sheetStateImageView.image = YZPlayerImage(named: "video_progress_left")
         return sheetStateImageView
     }()
     

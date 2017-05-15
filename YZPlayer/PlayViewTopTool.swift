@@ -61,7 +61,7 @@ class PlayViewTopTool: UIView {
             titleLabel.isHidden = false
             likeBtn.isHidden = false
             backgroundView.frame = CGRect(x: 0, y: 0, width: self.width, height: self.height)
-            backgroundView.image = UIImage(named: "video_topBackground")
+            backgroundView.image = YZPlayerImage(named: "video_topBackground")
             backBtn.frame = CGRect(x: 20, y: 25, width: 40, height: 40)
             titleLabel.frame =  CGRect(x: backBtn.rightX+10, y: 0, width: self.width-200, height: 30)
             titleLabel.centerY = backBtn.centerY
@@ -70,7 +70,7 @@ class PlayViewTopTool: UIView {
             likeBtn.isHidden = true
             titleLabel.isHidden = true
             backgroundView.frame = CGRect(x: 0, y: 0, width: self.width, height: self.height)
-            backgroundView.image = UIImage(named: "video_topBackground_small")
+            backgroundView.image = YZPlayerImage(named: "video_topBackground_small")
             backBtn.frame = CGRect(x: 5, y: 22, width: 40, height: 40)
         }
     }
@@ -105,7 +105,7 @@ class PlayViewTopTool: UIView {
     
     private lazy var backBtn: UIButton = {
         let backBtn = UIButton()
-        backBtn.setImage(UIImage(named: "video_back"), for: UIControlState())
+        backBtn.setImage(YZPlayerImage(named: "video_back"), for: UIControlState())
         backBtn.addTarget(self, action: #selector(self.clickBackBtn), for: .touchUpInside)
         return backBtn
     }()
@@ -114,8 +114,8 @@ class PlayViewTopTool: UIView {
     
     private lazy var likeBtn: UIButton = {
         let likeBtn = UIButton()
-        likeBtn.setImage(UIImage(named: "video_like"), for: UIControlState())
-        likeBtn.setImage(UIImage(named: "video_like_sel"), for: .selected)
+        likeBtn.setImage(YZPlayerImage(named: "video_like"), for: UIControlState())
+        likeBtn.setImage(YZPlayerImage(named: "video_like_sel"), for: .selected)
         likeBtn.addTarget(self, action: #selector(self.clickLikeBtn), for: .touchUpInside)
         return likeBtn
     }()

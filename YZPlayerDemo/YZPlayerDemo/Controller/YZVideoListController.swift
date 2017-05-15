@@ -22,7 +22,11 @@ class YZVideoListController: UIViewController, UITableViewDelegate, UITableViewD
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.setNavigationBarHidden(true, animated: true)
         UIApplication.shared.isStatusBarHidden = false
-        UIApplication.shared.statusBarStyle = .lightContent
+        if tableView.contentOffset.y >= ImageViewHeight {
+            UIApplication.shared.statusBarStyle = .default
+        } else {
+            UIApplication.shared.statusBarStyle = .lightContent
+        }
         super.viewWillAppear(animated)
     }
 
@@ -137,14 +141,17 @@ extension YZVideoListController {
             logoView.center = imageView.center
             activityIndicator.y = imageView.height - 25
             coverView.backgroundColor = RGB(r: 0x00, g: 0x00, b: 0x00, alpha: 0)
-//            searchBtn.alpha = 1
             if offsetY < -50 {
                 refreshData()
             }
         } else if offsetY >= 0 {
             let alpha = offsetY/ImageViewHeight
             coverView.backgroundColor = RGB(r: 0x00, g: 0x00, b: 0x00, alpha: alpha*0.9)
-//            searchBtn.alpha = 1-alpha
+            if offsetY >= ImageViewHeight {
+                UIApplication.shared.statusBarStyle = .default
+            } else {
+                UIApplication.shared.statusBarStyle = .lightContent
+            }
         }
     }
     

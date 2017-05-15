@@ -85,7 +85,7 @@ class PlayViewBottomTool: UIView {
             backgroundView.isHidden = true
             fullScreenBtn.isHidden = true
             
-            playSlider.setThumbImage(UIImage(named: "video_sliderControl"), for: UIControlState())
+            playSlider.setThumbImage(YZPlayerImage(named: "video_sliderControl"), for: UIControlState())
             backgroundView.frame = CGRect.zero
             timeLabel.frame = CGRect(x: 25, y: 15, width: timeLabel.width, height: timeLabel.height)
             durationLabel.frame = CGRect(x: self.width-25-durationLabel.width, y: 15, width: durationLabel.width, height: durationLabel.height)
@@ -102,8 +102,8 @@ class PlayViewBottomTool: UIView {
             fullScreenBtn.isHidden = false
             backgroundView.isHidden = false
             
-            playSlider.setThumbImage(UIImage(named: "video_sliderControl_small"), for: UIControlState())
-            backgroundView.image = UIImage(named: "video_bottomBackground_small")
+            playSlider.setThumbImage(YZPlayerImage(named: "video_sliderControl_small"), for: UIControlState())
+            backgroundView.image = YZPlayerImage(named: "video_bottomBackground_small")
             backgroundView.frame = CGRect(x: 0, y: 0, width: self.width, height: self.height-clearY)
             loadProgress.frame = CGRect(x: 0, y: self.height-loadProgress.height-clearY, width: self.width, height: loadProgress.height)
             playSlider.frame = CGRect(x: 0-2, y: self.height-playSlider.height-clearY, width: self.width+4, height: playSlider.height)
@@ -143,7 +143,7 @@ class PlayViewBottomTool: UIView {
     lazy var playSlider: UISlider = {
         let playSlider = UISlider()
         playSlider.isContinuous = false
-        playSlider.setThumbImage(UIImage(named: "video_sliderControl_small"), for: UIControlState())
+        playSlider.setThumbImage(YZPlayerImage(named: "video_sliderControl_small"), for: UIControlState())
         playSlider.minimumTrackTintColor = BLUE
         playSlider.maximumTrackTintColor = UIColor.clear
         playSlider.maximumValue = 1.0
@@ -155,13 +155,13 @@ class PlayViewBottomTool: UIView {
         let loadProgress = UIProgressView()
         loadProgress.progressTintColor = UIColor.lightGray
         loadProgress.trackTintColor = UIColor.darkGray
-        loadProgress.progress = 0.5
+        loadProgress.progress = 0.0
         return loadProgress
     }()
     
     private lazy var fullScreenBtn: UIButton = {
         let fullScreenBtn = UIButton()
-        fullScreenBtn.setImage(UIImage(named: "video_fullScreen"), for: UIControlState())
+        fullScreenBtn.setImage(YZPlayerImage(named: "video_fullScreen"), for: UIControlState())
         fullScreenBtn.addTarget(self, action: #selector(self.clickFullScreenBtn), for: .touchUpInside)
         return fullScreenBtn
     }()

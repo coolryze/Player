@@ -12,6 +12,10 @@ class YZVideoController: UIViewController {
 
     var video: YZVideo?
     
+    override var shouldAutorotate : Bool {
+        return false
+    }
+    
     deinit {
         print("YZVideoController")
     }
