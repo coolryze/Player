@@ -1,5 +1,5 @@
 //
-//  VideoAllCommentCell.swift
+//  YZVideoAllCommentCell.swift
 //  Mov
 //
 //  Created by heyuze on 2016/11/28.

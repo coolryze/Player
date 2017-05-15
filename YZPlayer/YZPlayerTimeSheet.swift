@@ -1,5 +1,5 @@
 //
-//  TimeSheetView.swift
+//  YZPlayerTimeSheet.swift
 //  AVPlayerDemo
 //
 //  Created by heyuze on 2016/11/24.
@@ -8,9 +8,7 @@
 
 import UIKit
 
-
-class TimeSheetView: UIView {
-    
+class YZPlayerTimeSheet: UIView {
     
     var isLeft: Bool = true {
         didSet {
@@ -29,7 +27,6 @@ class TimeSheetView: UIView {
     }
 
     
-    
     // MARK: - init
     
     override init(frame: CGRect) {
@@ -43,7 +40,6 @@ class TimeSheetView: UIView {
     }
 
     
-    
     // MARK: - Set up
     
     private func setupUI() {
@@ -52,7 +48,6 @@ class TimeSheetView: UIView {
         addSubview(sheetStateImageView)
         addSubview(sheetTimeLabel)
     }
-    
     
     
     // MARK: - Lazy Load
@@ -69,6 +64,5 @@ class TimeSheetView: UIView {
         sheetTimeLabel.textAlignment = .center
         return sheetTimeLabel
     }()
-    
     
 }

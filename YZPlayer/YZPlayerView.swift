@@ -1,5 +1,5 @@
 //
-//  VideoPlayView.swift
+//  YZPlayerView.swift
 //  AVPlayerDemo
 //
 //  Created by heyuze on 2016/11/18.
@@ -9,7 +9,6 @@
 import UIKit
 import AVFoundation
 import MediaPlayer
-
 
 // 枚举
 enum ControlType {
@@ -21,7 +20,8 @@ enum ControlType {
 
 let clearY: CGFloat = 10
 
-protocol VideoPlayViewDelegate: NSObjectProtocol {
+
+protocol YZPlayerViewDelegate: NSObjectProtocol {
     
     // 返回
     func backAction()
@@ -32,18 +32,16 @@ protocol VideoPlayViewDelegate: NSObjectProtocol {
 }
 
 
-class VideoPlayView: UIView {
-    
-    
+class YZPlayerView: UIView {
     
     // MARK: - Property
     
-    weak var delegate: VideoPlayViewDelegate?
+    weak var delegate: YZPlayerViewDelegate?
     weak var containerController: UIViewController?
 
     var video: YZVideo? {
         didSet {
-            playViewTopTool.title = video?.title
+            topTool.title = video?.title
         }
     }
     
@@ -66,7 +64,6 @@ class VideoPlayView: UIView {
     fileprivate var touchBeginPoint: CGPoint = CGPoint.zero  // 开始触摸时的点
     
     fileprivate var controlType: ControlType = .noneControl  // 控制类型
-    
     
     // Player Property
     
@@ -99,7 +96,6 @@ class VideoPlayView: UIView {
     
     fileprivate var volumeSlider: UISlider? // 控制声音slier
 
-
     
     // MARK: - init
     
@@ -114,9 +110,8 @@ class VideoPlayView: UIView {
     }
     
     deinit {
-        print("VideoPlayView deinit")
+        print("YZPlayerView deinit")
     }
-    
     
     
     // MARK: - Set up
@@ -127,22 +122,22 @@ class VideoPlayView: UIView {
         // playerLayer
         backgroundView.layer.addSublayer(playerLayer)
         // 底部工具条
-        addSubview(playViewBottomTool)
+        addSubview(bottomTool)
         // 顶部工具条
-        addSubview(playViewTopTool)
+        addSubview(topTool)
         // 播放按钮
         addSubview(playBtn)
         // 返回按钮
         addSubview(backBtn)
         // 时间进度视图(快进时)
-        addSubview(timeView)
+        addSubview(timeSheet)
         // 控制声音视图
         creatVolumeView()
         
-        playViewBottomTool.isHidden = true
-        playViewTopTool.isHidden = true
+        bottomTool.isHidden = true
+        topTool.isHidden = true
         playBtn.isHidden = true
-        timeView.isHidden = true
+        timeSheet.isHidden = true
     }
     
     private func creatVolumeView() {
@@ -175,10 +170,9 @@ class VideoPlayView: UIView {
     }
     
     private func addTarget() {
-        self.playViewBottomTool.playSlider.addTarget(self, action: #selector(self.sliderValueChanged(_:)), for: .valueChanged)
-        self.playViewBottomTool.playSlider.addTarget(self, action: #selector(self.sliderTouchDown(_:)), for: .touchDown)
+        self.bottomTool.playSlider.addTarget(self, action: #selector(self.sliderValueChanged(_:)), for: .valueChanged)
+        self.bottomTool.playSlider.addTarget(self, action: #selector(self.sliderTouchDown(_:)), for: .touchDown)
     }
-    
     
     
     // MARK: - Action
@@ -210,29 +204,28 @@ class VideoPlayView: UIView {
     func hideOrShowBtnClick(sender: AnyObject?) {
         // 防止点击底部栏视图隐藏
         let point = sender!.location(in: self)
-        var subY =  self.frame.size.height - self.playViewBottomTool.frame.size.height
+        var subY =  self.frame.size.height - self.bottomTool.frame.size.height
         if self.isFullScreen == true {
-            subY = self.frame.size.width - self.playViewBottomTool.frame.size.height
+            subY = self.frame.size.width - self.bottomTool.frame.size.height
         }
         let flag: Bool = (point.y < subY) && (point.y != 0) ? true : false
-        let topSubY = self.playViewTopTool.frame.height
+        let topSubY = self.topTool.frame.height
         let topFlag: Bool = (point.y > topSubY) && (point.y != 0) ? true : false
         self.isHideColumn = !self.isHideColumn
         if self.isHideColumn  && flag  && topFlag {
             self.playBtn.isHidden = true
-            self.playViewBottomTool.isHidden = true
-            self.playViewTopTool.isHidden = true
+            self.bottomTool.isHidden = true
+            self.topTool.isHidden = true
             if self.isFullScreen == true {
                 UIApplication.shared.isStatusBarHidden = true
             }
         } else {
             self.playBtn.isHidden = false
-            self.playViewBottomTool.isHidden = false
-            self.playViewTopTool.isHidden = false
+            self.bottomTool.isHidden = false
+            self.topTool.isHidden = false
             UIApplication.shared.isStatusBarHidden = false
         }
     }
-    
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
@@ -261,8 +254,8 @@ class VideoPlayView: UIView {
                 let value = self.moveProgressControllWithTempPoint(tempPoint)
                 self.timeValueChanging(value: value)
                 self.isSeeking = true
-                self.playViewBottomTool.nowTime = self.timeFormatted(totalSeconds: Int(value))
-                self.playViewBottomTool.sliderValue = Float(value) / Float(self.duration)
+                self.bottomTool.nowTime = self.timeFormatted(totalSeconds: Int(value))
+                self.bottomTool.sliderValue = Float(value) / Float(self.duration)
             } else if tan > 1 / sqrt(3) {
                 // 亮度
                 if  self.touchBeginPoint.x < self.bounds.size.width / 2  {
@@ -311,13 +304,12 @@ class VideoPlayView: UIView {
                     self.goonPlay()
                 }) 
             }
-            self.timeView.isHidden = true
+            self.timeSheet.isHidden = true
         } else {
             self.hideOrShowBtnClick(sender: (touches as NSSet).anyObject() as AnyObject?)
         }
     }
 
-    
     
     // MARK: - Operation
     
@@ -379,7 +371,6 @@ class VideoPlayView: UIView {
     }
     
     
-    
     // MARK: - Event
     
     @objc private func orientationChanged() {
@@ -436,22 +427,22 @@ class VideoPlayView: UIView {
         let nowString = self.timeFormatted(totalSeconds: currentTimeSec)
         // 如果不是在移动slider中
         if self.isSeeking == false {
-            self.playViewBottomTool.nowTime = nowString
-            self.playViewBottomTool.sliderValue = Float(currentTimeSec) / Float(totalTime)
+            self.bottomTool.nowTime = nowString
+            self.bottomTool.sliderValue = Float(currentTimeSec) / Float(totalTime)
         }
     }
     
-    // timeView在时间发生变化时所作的操作
+    // timeSheet在时间发生变化时所作的操作
     private func timeValueChanging(value: Float) {
         if value > self.currentTime {
-            self.timeView.isLeft = false
+            self.timeSheet.isLeft = false
         } else if value < self.currentTime {
-            self.timeView.isLeft = true
+            self.timeSheet.isLeft = true
         }
-        self.timeView.isHidden = false
+        self.timeSheet.isHidden = false
         let tempTime = self.timeFormatted(totalSeconds: Int(value))
         let totalTime = self.timeFormatted(totalSeconds: Int(self.duration))
-        self.timeView.timeStr = String(format: "%@ / %@", tempTime,totalTime)
+        self.timeSheet.timeStr = String(format: "%@ / %@", tempTime,totalTime)
     }
     
     //MARK: - 用来控制移动过程中计算手指划过的时间
@@ -466,7 +457,6 @@ class VideoPlayView: UIView {
     }
 
     
-    
     // MARK: - Func
     
     // 开始播放
@@ -480,7 +470,7 @@ class VideoPlayView: UIView {
         if durationTime != 0 {
             totalTime = durationTime / timeScale
         }
-        self.playViewBottomTool.totalTime = self.timeFormatted(totalSeconds: totalTime)
+        self.bottomTool.totalTime = self.timeFormatted(totalSeconds: totalTime)
 
         if self.playTime != nil {
             self.playTime?.invalidate()
@@ -524,9 +514,8 @@ class VideoPlayView: UIView {
     }
     
     func topToolLikeBtnSelect(selected: Bool) {
-        playViewTopTool.likeBtnSelect(selected: selected)
+        topTool.likeBtnSelect(selected: selected)
     }
-    
     
     
     // MARK: - Lazy load
@@ -537,24 +526,24 @@ class VideoPlayView: UIView {
         return backgroundView
     }()
     
-    fileprivate lazy var playViewBottomTool: PlayViewBottomTool = {
-        let playViewBottomTool = PlayViewBottomTool(frame: CGRect(x: 0, y: self.height-50-clearY, width: self.width, height: 50+clearY))
-        playViewBottomTool.delegate = self
-        return playViewBottomTool
+    fileprivate lazy var bottomTool: YZPlayerViewBottomTool = {
+        let bottomTool = YZPlayerViewBottomTool(frame: CGRect(x: 0, y: self.height-50-clearY, width: self.width, height: 50+clearY))
+        bottomTool.delegate = self
+        return bottomTool
     }()
     
-    fileprivate lazy var playViewTopTool: PlayViewTopTool = {
-        let playViewTopTool = PlayViewTopTool(frame: CGRect(x: 0, y: 0, width: self.width, height: 64))
-        playViewTopTool.delegate = self
-        return playViewTopTool
+    fileprivate lazy var topTool: YZPlayerViewTopTool = {
+        let topTool = YZPlayerViewTopTool(frame: CGRect(x: 0, y: 0, width: self.width, height: 64))
+        topTool.delegate = self
+        return topTool
     }()
     
-    fileprivate lazy var timeView: TimeSheetView = {
-        let timeView = TimeSheetView(frame: CGRect(x: 0, y: 0, width: 150, height: 70))
-        timeView.layer.cornerRadius = 10
-        timeView.centerX = self.centerX
-        timeView.centerY = self.centerY - clearY
-        return timeView
+    fileprivate lazy var timeSheet: YZPlayerTimeSheet = {
+        let timeSheet = YZPlayerTimeSheet(frame: CGRect(x: 0, y: 0, width: 150, height: 70))
+        timeSheet.layer.cornerRadius = 10
+        timeSheet.centerX = self.centerX
+        timeSheet.centerY = self.centerY - clearY
+        return timeSheet
     }()
     
     fileprivate lazy var playBtn: UIButton = {
@@ -574,15 +563,12 @@ class VideoPlayView: UIView {
         return backBtn
     }()
     
-    
 }
 
 
 
-
 // MARK: - 底部工具栏代理
-
-extension VideoPlayView: PlayViewBottomToolDelegate {
+extension YZPlayerView: YZPlayerViewBottomToolDelegate {
     
     func fullScreen(btn: UIButton) {
         if isFullScreen {
@@ -596,10 +582,8 @@ extension VideoPlayView: PlayViewBottomToolDelegate {
 
 
 
-
 // MARK: - 顶部工具栏代理
-
-extension VideoPlayView: PlayViewTopToolDelegate {
+extension YZPlayerView: YZPlayerViewTopToolDelegate {
     
     func back() {
         if isFullScreen {
@@ -623,10 +607,8 @@ extension VideoPlayView: PlayViewTopToolDelegate {
 
 
 
-
 // MARK: - KVO
-
-extension VideoPlayView {
+extension YZPlayerView {
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         if keyPath == "loadedTimeRanges" {
@@ -637,7 +619,7 @@ extension VideoPlayView {
             let totalDuration = CMTimeGetSeconds(duration)
             self.duration = Float(totalDuration)
             // 显示缓冲进度
-            self.playViewBottomTool.progressValue = timeInterval / Float(totalDuration)
+            self.bottomTool.progressValue = timeInterval / Float(totalDuration)
         }  else if keyPath == "status" {
             if self.player.status == .failed {
                 print("Failed")
@@ -657,10 +639,8 @@ extension VideoPlayView {
 
 
 
-
 // MARK: - Slider
-
-extension VideoPlayView {
+extension YZPlayerView {
 
     @objc fileprivate func sliderTouchDown(_ slider: UISlider) {
         self.isSeeking = true
@@ -672,7 +652,7 @@ extension VideoPlayView {
         self.isSeeking = false
         let progress = self.duration * slider.value
         self.currentTime = progress
-        self.playViewBottomTool.nowTime = self.timeFormatted(totalSeconds: Int(self.currentTime))
+        self.bottomTool.nowTime = self.timeFormatted(totalSeconds: Int(self.currentTime))
         //播放到
         let cmTime = CMTimeMake(Int64(self.currentTime), 1)
         self.player.seek(to: cmTime, completionHandler: { (finish) in
@@ -686,8 +666,7 @@ extension VideoPlayView {
 
 
 // MARK: - 以下是处理全屏旋转
-
-extension VideoPlayView {
+extension YZPlayerView {
     
     fileprivate func toOrientation(orientation: UIInterfaceOrientation) {
         let currentOrientation = UIApplication.shared.statusBarOrientation
@@ -698,7 +677,7 @@ extension VideoPlayView {
             isFullScreen = false
             // 竖屏
             self.removeFromSuperview()
-            self.frame = CGRect(x: 0, y: 0, width: kScreenWidth, height: VideoPlayViewHeight+clearY)
+            self.frame = CGRect(x: 0, y: 0, width: kScreenWidth, height: PlayerViewHeight+clearY)
             backgroundView.frame = self.frame
             backgroundView.height -= clearY
             playerLayer.frame = self.frame
@@ -707,18 +686,18 @@ extension VideoPlayView {
             self.snp.removeConstraints()
             self.snp.makeConstraints({ (make) in
                 make.top.leading.trailing.equalTo(self.containerController!.view)
-                make.height.equalTo(VideoPlayViewHeight+clearY)
+                make.height.equalTo(PlayerViewHeight+clearY)
             })
-            self.playViewBottomTool.frame = CGRect(x: 0, y: self.height-50-clearY, width: self.width, height: 50+clearY)
-            self.playViewBottomTool.setupFrame(isFullScreen: isFullScreen)
-            self.playViewTopTool.frame = CGRect(x: 0, y: 0, width: self.width, height: 64)
-            self.playViewTopTool.setupFrame(isFullScreen: isFullScreen)
+            self.bottomTool.frame = CGRect(x: 0, y: self.height-50-clearY, width: self.width, height: 50+clearY)
+            self.bottomTool.setupFrame(isFullScreen: isFullScreen)
+            self.topTool.frame = CGRect(x: 0, y: 0, width: self.width, height: 64)
+            self.topTool.setupFrame(isFullScreen: isFullScreen)
             self.playBtn.centerX = self.centerX
             self.playBtn.centerY = self.centerY - clearY
             self.playBtn.setImage(YZPlayerImage(named: "video_play_small"), for: UIControlState())
             self.playBtn.setImage(YZPlayerImage(named: "video_pause_small"), for: .selected)
             self.backBtn.isHidden = false
-            self.timeView.center = CGPoint(x: self.width*0.5, y: (self.height-clearY)*0.5)
+            self.timeSheet.center = CGPoint(x: self.width*0.5, y: (self.height-clearY)*0.5)
         } else {
             // 横屏
             if orientation == .landscapeLeft || orientation == .landscapeRight {
@@ -733,15 +712,15 @@ extension VideoPlayView {
                     make.size.equalTo(CGSize(width: kScreenHeight, height: kScreenWidth))
                     make.center.equalTo(self.containerController!.view)
                 })
-                self.playViewBottomTool.frame = CGRect(x: 0, y: self.height-50, width: self.width, height: 50)
-                self.playViewBottomTool.setupFrame(isFullScreen: isFullScreen)
-                self.playViewTopTool.frame = CGRect(x: 0, y: 0, width: self.width, height: 64)
-                self.playViewTopTool.setupFrame(isFullScreen: isFullScreen)
+                self.bottomTool.frame = CGRect(x: 0, y: self.height-50, width: self.width, height: 50)
+                self.bottomTool.setupFrame(isFullScreen: isFullScreen)
+                self.topTool.frame = CGRect(x: 0, y: 0, width: self.width, height: 64)
+                self.topTool.setupFrame(isFullScreen: isFullScreen)
                 self.playBtn.center = self.center
                 self.playBtn.setImage(YZPlayerImage(named: "video_play"), for: UIControlState())
                 self.playBtn.setImage(YZPlayerImage(named: "video_pause"), for: .selected)
                 self.backBtn.isHidden = true
-                self.timeView.center = CGPoint(x: self.width*0.5, y: self.height*0.5)
+                self.timeSheet.center = CGPoint(x: self.width*0.5, y: self.height*0.5)
             }
         }
         UIApplication.shared.statusBarOrientation = orientation

@@ -1,5 +1,5 @@
 //
-//  PlayViewTopTool.swift
+//  YZPlayerViewTopTool.swift
 //  AVPlayerDemo
 //
 //  Created by heyuze on 2016/11/23.
@@ -8,8 +8,7 @@
 
 import UIKit
 
-
-protocol PlayViewTopToolDelegate: NSObjectProtocol {
+protocol YZPlayerViewTopToolDelegate: NSObjectProtocol {
     
     func back()
  
@@ -18,10 +17,9 @@ protocol PlayViewTopToolDelegate: NSObjectProtocol {
 }
 
 
-class PlayViewTopTool: UIView {
+class YZPlayerViewTopTool: UIView {
     
-    
-    weak var delegate: PlayViewTopToolDelegate?
+    weak var delegate: YZPlayerViewTopToolDelegate?
     
     var title: String? {
         didSet {
@@ -29,7 +27,6 @@ class PlayViewTopTool: UIView {
         }
     }
     
-
 
     // MARK: - init
     
@@ -42,7 +39,6 @@ class PlayViewTopTool: UIView {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
     
     
     // MARK: - Set up
@@ -76,7 +72,6 @@ class PlayViewTopTool: UIView {
     }
     
     
-    
     // MARK: - Action
     
     @objc fileprivate func clickBackBtn() {
@@ -96,7 +91,6 @@ class PlayViewTopTool: UIView {
     func likeBtnSelect(selected: Bool) {
         likeBtn.isSelected = selected
     }
-    
     
     
     // MARK: - Lazy load
@@ -119,6 +113,5 @@ class PlayViewTopTool: UIView {
         likeBtn.addTarget(self, action: #selector(self.clickLikeBtn), for: .touchUpInside)
         return likeBtn
     }()
-    
     
 }

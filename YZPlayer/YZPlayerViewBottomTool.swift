@@ -1,5 +1,5 @@
 //
-//  PlayBottomTool.swift
+//  YZPlayerViewBottomTool.swift
 //  AVPlayerDemo
 //
 //  Created by heyuze on 2016/11/21.
@@ -8,18 +8,16 @@
 
 import UIKit
 
-
-protocol PlayViewBottomToolDelegate: NSObjectProtocol{
+protocol YZPlayerViewBottomToolDelegate: NSObjectProtocol{
     
     func fullScreen(btn: UIButton)  //全屏、取消
     
 }
 
 
-class PlayViewBottomTool: UIView {
+class YZPlayerViewBottomTool: UIView {
 
-    
-    weak var delegate: PlayViewBottomToolDelegate?
+    weak var delegate: YZPlayerViewBottomToolDelegate?
     
     var progressValue: Float = 0.0 {
         didSet {
@@ -46,7 +44,6 @@ class PlayViewBottomTool: UIView {
     }
     
     
-    
     // MARK: - init
     
     override init(frame: CGRect) {
@@ -58,7 +55,6 @@ class PlayViewBottomTool: UIView {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
     
     
     // MARK: - Set up
@@ -73,7 +69,6 @@ class PlayViewBottomTool: UIView {
         
         setupFrame(isFullScreen: false)
     }
-    
     
     func setupFrame(isFullScreen: Bool) {
         if isFullScreen {
@@ -113,7 +108,6 @@ class PlayViewBottomTool: UIView {
     }
     
     
-    
     // MARK: - Action
     
     @objc private func clickFullScreenBtn() {
@@ -121,7 +115,6 @@ class PlayViewBottomTool: UIView {
             delegate?.fullScreen(btn: fullScreenBtn)
         }
     }
-    
     
     
     // MARK: - Lazy load
@@ -165,6 +158,5 @@ class PlayViewBottomTool: UIView {
         fullScreenBtn.addTarget(self, action: #selector(self.clickFullScreenBtn), for: .touchUpInside)
         return fullScreenBtn
     }()
-    
     
 }

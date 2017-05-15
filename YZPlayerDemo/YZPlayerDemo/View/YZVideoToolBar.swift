@@ -1,5 +1,5 @@
 //
-//  VideoToolBar.swift
+//  YZVideoToolBar.swift
 //  Mov
 //
 //  Created by heyuze on 2016/11/24.

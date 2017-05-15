@@ -8,14 +8,6 @@
 
 import UIKit
 
-
-// MARK: - 屏幕参数
-let kScreenWidth = UIScreen.main.bounds.size.width
-let kScreenHeight = UIScreen.main.bounds.size.height
-let kScreenBounds = UIScreen.main.bounds
-
-
-
 // MARK: - 随机字符串
 func randomSmallCaseString(length: Int) -> String {
     var output = ""
@@ -27,13 +19,8 @@ func randomSmallCaseString(length: Int) -> String {
     return output
 }
 
-
-
 // MARK: - Color
-// RGB颜色
-func RGB(r: CGFloat, g: CGFloat, b: CGFloat, alpha: CGFloat) -> UIColor {
-    return UIColor(red: r / 255, green: g / 255, blue: b / 255, alpha: alpha)
-}
+
 // 随机颜色
 func randomColor() -> UIColor {
     return UIColor(red: CGFloat(arc4random() % 256) / 255, green: CGFloat(arc4random() % 256) / 255, blue: CGFloat(arc4random() % 256) / 255, alpha: 1)
@@ -47,9 +34,7 @@ public extension UIColor {
     }
 }
 
-
 // MARK: - 时间
-
 // 秒数转换为时间
 func secondsConverToTimeStr(seconds: Int) -> String {
     if seconds >= 3600 {

@@ -47,10 +47,10 @@
 		606FF5C01EC5A79E0052DBAE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 606FF5BF1EC5A79E0052DBAE /* Assets.xcassets */; };
 		606FF5C31EC5A79E0052DBAE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 606FF5C11EC5A79E0052DBAE /* LaunchScreen.storyboard */; };
 		606FF5CE1EC5A79E0052DBAE /* YZPlayerDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606FF5CD1EC5A79E0052DBAE /* YZPlayerDemoTests.swift */; };
-		608801181EC987E800E07EFB /* PlayViewBottomTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 608801141EC987E800E07EFB /* PlayViewBottomTool.swift */; };
-		608801191EC987E800E07EFB /* PlayViewTopTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 608801151EC987E800E07EFB /* PlayViewTopTool.swift */; };
-		6088011A1EC987E800E07EFB /* TimeSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 608801161EC987E800E07EFB /* TimeSheetView.swift */; };
-		6088011B1EC987E800E07EFB /* VideoPlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 608801171EC987E800E07EFB /* VideoPlayView.swift */; };
+		608801181EC987E800E07EFB /* YZPlayerViewBottomTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 608801141EC987E800E07EFB /* YZPlayerViewBottomTool.swift */; };
+		608801191EC987E800E07EFB /* YZPlayerViewTopTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 608801151EC987E800E07EFB /* YZPlayerViewTopTool.swift */; };
+		6088011A1EC987E800E07EFB /* YZPlayerTimeSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 608801161EC987E800E07EFB /* YZPlayerTimeSheet.swift */; };
+		6088011B1EC987E800E07EFB /* YZPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 608801171EC987E800E07EFB /* YZPlayerView.swift */; };
 		6088011D1EC98AFA00E07EFB /* Resource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6088011C1EC98AFA00E07EFB /* Resource.bundle */; };
 		6088011F1EC990D400E07EFB /* YZPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6088011E1EC990D400E07EFB /* YZPlayer.swift */; };
 		60A276991EC9AED2008DC40D /* UINavigationController+Rotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A276981EC9AED2008DC40D /* UINavigationController+Rotation.swift */; };
@@ -198,10 +198,10 @@
 		606FF5C91EC5A79E0052DBAE /* YZPlayerDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YZPlayerDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		606FF5CD1EC5A79E0052DBAE /* YZPlayerDemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YZPlayerDemoTests.swift; sourceTree = "<group>"; };
 		606FF5CF1EC5A79E0052DBAE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		608801141EC987E800E07EFB /* PlayViewBottomTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayViewBottomTool.swift; sourceTree = "<group>"; };
-		608801151EC987E800E07EFB /* PlayViewTopTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayViewTopTool.swift; sourceTree = "<group>"; };
-		608801161EC987E800E07EFB /* TimeSheetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeSheetView.swift; sourceTree = "<group>"; };
-		608801171EC987E800E07EFB /* VideoPlayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoPlayView.swift; sourceTree = "<group>"; };
+		608801141EC987E800E07EFB /* YZPlayerViewBottomTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YZPlayerViewBottomTool.swift; sourceTree = "<group>"; };
+		608801151EC987E800E07EFB /* YZPlayerViewTopTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YZPlayerViewTopTool.swift; sourceTree = "<group>"; };
+		608801161EC987E800E07EFB /* YZPlayerTimeSheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YZPlayerTimeSheet.swift; sourceTree = "<group>"; };
+		608801171EC987E800E07EFB /* YZPlayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YZPlayerView.swift; sourceTree = "<group>"; };
 		6088011C1EC98AFA00E07EFB /* Resource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Resource.bundle; sourceTree = "<group>"; };
 		6088011E1EC990D400E07EFB /* YZPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YZPlayer.swift; sourceTree = "<group>"; };
 		60A276981EC9AED2008DC40D /* UINavigationController+Rotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Rotation.swift"; sourceTree = "<group>"; };
@@ -525,10 +525,10 @@
 			children = (
 				60A276971EC9AE88008DC40D /* Category */,
 				6088011E1EC990D400E07EFB /* YZPlayer.swift */,
-				608801171EC987E800E07EFB /* VideoPlayView.swift */,
-				608801151EC987E800E07EFB /* PlayViewTopTool.swift */,
-				608801141EC987E800E07EFB /* PlayViewBottomTool.swift */,
-				608801161EC987E800E07EFB /* TimeSheetView.swift */,
+				608801171EC987E800E07EFB /* YZPlayerView.swift */,
+				608801151EC987E800E07EFB /* YZPlayerViewTopTool.swift */,
+				608801141EC987E800E07EFB /* YZPlayerViewBottomTool.swift */,
+				608801161EC987E800E07EFB /* YZPlayerTimeSheet.swift */,
 				6088011C1EC98AFA00E07EFB /* Resource.bundle */,
 			);
 			name = YZPlayer;
@@ -823,8 +823,8 @@
 				6088011F1EC990D400E07EFB /* YZPlayer.swift in Sources */,
 				60DDC1901EC5BC2D00559000 /* ConstraintPriorityTarget.swift in Sources */,
 				60DDC1DE1EC5BF4A00559000 /* YYWebImageManager.m in Sources */,
-				6088011A1EC987E800E07EFB /* TimeSheetView.swift in Sources */,
-				608801191EC987E800E07EFB /* PlayViewTopTool.swift in Sources */,
+				6088011A1EC987E800E07EFB /* YZPlayerTimeSheet.swift in Sources */,
+				608801191EC987E800E07EFB /* YZPlayerViewTopTool.swift in Sources */,
 				60DDC1DD1EC5BF4A00559000 /* YYImageCache.m in Sources */,
 				60DDC1D81EC5BF4A00559000 /* YYAnimatedImageView.m in Sources */,
 				60DDC1811EC5BC2D00559000 /* ConstraintItem.swift in Sources */,
@@ -862,12 +862,12 @@
 				60DDC1941EC5BC2D00559000 /* ConstraintView.swift in Sources */,
 				60DDC17F1EC5BC2D00559000 /* ConstraintInsets.swift in Sources */,
 				60DDC1DF1EC5BF4A00559000 /* YYWebImageOperation.m in Sources */,
-				608801181EC987E800E07EFB /* PlayViewBottomTool.swift in Sources */,
+				608801181EC987E800E07EFB /* YZPlayerViewBottomTool.swift in Sources */,
 				60DDC1911EC5BC2D00559000 /* ConstraintRelatableTarget.swift in Sources */,
 				6002A8A71EC72C2900C55FD5 /* YZVideoController.swift in Sources */,
 				60DDC1921EC5BC2D00559000 /* ConstraintRelation.swift in Sources */,
 				60DDC18B1EC5BC2D00559000 /* ConstraintMakerPriortizable.swift in Sources */,
-				6088011B1EC987E800E07EFB /* VideoPlayView.swift in Sources */,
+				6088011B1EC987E800E07EFB /* YZPlayerView.swift in Sources */,
 				60DDC1881EC5BC2D00559000 /* ConstraintMakerEditable.swift in Sources */,
 				60DDC17B1EC5BC2D00559000 /* ConstraintConfig.swift in Sources */,
 				60DDC1831EC5BC2D00559000 /* ConstraintLayoutGuide.swift in Sources */,

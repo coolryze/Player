@@ -62,10 +62,10 @@ class YZVideoController: UIViewController {
     
     // MARK: - Lazy load
     
-    private lazy var playerView: VideoPlayView = {
-        let frame = CGRect(x: 0, y: 0, width: kScreenWidth, height: VideoPlayViewHeight+clearY)
+    private lazy var playerView: YZPlayerView = {
+        let frame = CGRect(x: 0, y: 0, width: kScreenWidth, height: PlayerViewHeight+clearY)
 //        let playerView = VideoPlayView(frame: frame, urlString: "http://ogpxf29ue.bkt.clouddn.com/BATTLE_FIELD.mp4")
-        let playerView = VideoPlayView(frame: frame)
+        let playerView = YZPlayerView(frame: frame)
         playerView.video = self.video
         playerView.delegate = self
         playerView.containerController = self
@@ -73,12 +73,12 @@ class YZVideoController: UIViewController {
     }()
     
     private lazy var videoToolBar: YZVideoToolBar = {
-        let videoToolBar = YZVideoToolBar(frame: CGRect(x: 0, y: VideoPlayViewHeight, width: kScreenWidth, height: 40))
+        let videoToolBar = YZVideoToolBar(frame: CGRect(x: 0, y: PlayerViewHeight, width: kScreenWidth, height: 40))
         return videoToolBar
     }()
     
     private lazy var tableView: UITableView = {
-        let tableView = UITableView(frame: CGRect(x: 0, y: VideoPlayViewHeight+40, width: kScreenWidth, height: kScreenHeight-VideoPlayViewHeight-40))
+        let tableView = UITableView(frame: CGRect(x: 0, y: PlayerViewHeight+40, width: kScreenWidth, height: kScreenHeight-PlayerViewHeight-40))
         tableView.backgroundColor = BACKGROUND_COLOR
         tableView.separatorStyle = .none
         tableView.tableFooterView = UIView()
@@ -96,7 +96,7 @@ class YZVideoController: UIViewController {
     }()
     
     fileprivate lazy var commentView: YZVideoCommentView = {
-        let commentView = YZVideoCommentView(frame: CGRect(x: 0, y: kScreenHeight, width: kScreenWidth, height: kScreenHeight-VideoPlayViewHeight))
+        let commentView = YZVideoCommentView(frame: CGRect(x: 0, y: kScreenHeight, width: kScreenWidth, height: kScreenHeight-PlayerViewHeight))
         commentView.commentCallBack = { [weak self] in
             guard let strongSelf = self else { return }
             strongSelf.commentEdit()
@@ -136,7 +136,7 @@ extension YZVideoController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section ==  6 {
             UIView.animate(withDuration: 0.25, animations: {
-                self.commentView.y = VideoPlayViewHeight
+                self.commentView.y = PlayerViewHeight
             })
         }
     }
@@ -194,7 +194,7 @@ extension YZVideoController: UITableViewDataSource {
 
 // MARK: - VideoPlayViewDelegate
 
-extension YZVideoController: VideoPlayViewDelegate {
+extension YZVideoController: YZPlayerViewDelegate {
     
     func backAction() {
         navigationController?.popViewController(animated: true)
