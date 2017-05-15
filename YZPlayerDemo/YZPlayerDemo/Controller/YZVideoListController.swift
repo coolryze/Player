@@ -118,7 +118,7 @@ extension YZVideoListController {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return VideoFrontHeight+140
+        return ListCellHeight+140
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {

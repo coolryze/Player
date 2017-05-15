@@ -60,7 +60,7 @@ class YZVideoListCell: UITableViewCell {
         
         frontCoverView.snp.makeConstraints { (make) in
             make.top.leading.trailing.equalTo(contentView)
-            make.height.equalTo(VideoFrontHeight)
+            make.height.equalTo(ListCellHeight)
         }
         lengthBackView.snp.makeConstraints { (make) in
             make.leading.bottom.equalTo(frontCoverView)
