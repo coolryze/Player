@@ -10,6 +10,7 @@ import UIKit
 
 private let ImageViewHeight: CGFloat = kScreenWidth * (750/1334)
 
+
 class YZVideoListController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var viewModel = YZVideoListViewModel()
@@ -156,6 +157,7 @@ extension YZVideoListController {
     }
     
 }
+
 
 // MARK: - Table View Data Source
 extension YZVideoListController {

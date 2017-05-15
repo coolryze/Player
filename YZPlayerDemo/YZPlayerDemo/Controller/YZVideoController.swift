@@ -53,8 +53,8 @@ class YZVideoController: UIViewController {
     // MARK: - Action
     
     fileprivate func commentEdit() {
-//        let commentEditController = VideoCommentEditController()
-//        presentViewController(UINavigationController(rootViewController: commentEditController), animated: true, completion: nil)
+        let commentEditController = YZCommentEditController()
+        present(UINavigationController(rootViewController: commentEditController), animated: true, completion: nil)
     }
     
     
@@ -201,8 +201,8 @@ extension YZVideoController: YZPlayerViewDelegate {
     }
     
     // 喜欢video
-    func likeAction(){
-    
+    func likeAction() {
+        print("like")
     }
     
 }

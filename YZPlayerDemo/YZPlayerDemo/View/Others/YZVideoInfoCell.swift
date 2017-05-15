@@ -8,9 +8,7 @@
 
 import UIKit
 
-
 class YZVideoInfoCell: UITableViewCell {
-
 
     // MARK: - init
     
@@ -23,7 +21,6 @@ class YZVideoInfoCell: UITableViewCell {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
     
     
     // MARK: - Set up
@@ -61,7 +58,6 @@ class YZVideoInfoCell: UITableViewCell {
     }
     
     
-    
     // MARK: - Lazy Load
     
     private lazy var titleLabel = UILabel(text: "Title", textColor: BLACK, fontSize: 14)
@@ -69,6 +65,5 @@ class YZVideoInfoCell: UITableViewCell {
     private lazy var detailLabel = UILabel(text: "Details...", textColor: GRAY_99, fontSize: 12)
     
     private lazy var nextView = UIImageView(image: UIImage(named: "video_next"))
-    
     
 }

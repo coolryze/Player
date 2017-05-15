@@ -8,12 +8,9 @@
 
 import UIKit
 
-
 class YZVideoUserInputCell: UITableViewCell {
     
-    
     var commentCallBack: (()->())?
-
     
     
     // MARK: - init
@@ -27,7 +24,6 @@ class YZVideoUserInputCell: UITableViewCell {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
     
     
     // MARK: - Set up
@@ -86,7 +82,6 @@ class YZVideoUserInputCell: UITableViewCell {
     }
     
     
-    
     // MARK: - Action
     
     @objc private func comment() {
@@ -94,7 +89,6 @@ class YZVideoUserInputCell: UITableViewCell {
             commentCallBack!()
         }
     }
-    
     
     
     // MARK: - Lazy Load
@@ -119,6 +113,5 @@ class YZVideoUserInputCell: UITableViewCell {
     }()
     
     private lazy var placeholderLabel = UILabel(text: "说点什么吧!", textColor: GRAY_99, fontSize: 13)
-
     
 }

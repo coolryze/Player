@@ -8,10 +8,8 @@
 
 import UIKit
 
-
 class YZVideoToolBar: UIView {
 
-    
     // MARK: - init
 
     override init(frame: CGRect) {
@@ -23,7 +21,6 @@ class YZVideoToolBar: UIView {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
     
     
     // MARK: - Set up
@@ -67,7 +64,6 @@ class YZVideoToolBar: UIView {
     }
     
     
-    
     // MARK: - Action
     
     @objc private func clickLikeBtn() {
@@ -85,7 +81,6 @@ class YZVideoToolBar: UIView {
     @objc private func clickReportBtn() {
     
     }
-    
     
     
     // MARK: - Lazy load
@@ -117,6 +112,5 @@ class YZVideoToolBar: UIView {
         reportBtn.addTarget(self, action: #selector(self.clickReportBtn), for: .touchUpInside)
         return reportBtn
     }()
-    
     
 }

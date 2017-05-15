@@ -8,9 +8,7 @@
 
 import UIKit
 
-
 class YZVideoCommentCell: UITableViewCell {
-
 
     // MARK: - init
     
@@ -23,7 +21,6 @@ class YZVideoCommentCell: UITableViewCell {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
     
     
     // MARK: - Set up
@@ -79,13 +76,11 @@ class YZVideoCommentCell: UITableViewCell {
     }
     
     
-    
     // MARK: - Action
     
     @objc private func like() {
-        
+        print("like")
     }
-    
     
     
     // MARK: - Lazy Load
@@ -114,6 +109,5 @@ class YZVideoCommentCell: UITableViewCell {
         commentLabel.numberOfLines = 0
         return commentLabel
     }()
-    
     
 }

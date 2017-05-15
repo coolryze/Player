@@ -8,9 +8,7 @@
 
 import UIKit
 
-
 class YZVideoAllCommentCell: UITableViewCell {
-
     
     // MARK: - init
 
@@ -23,7 +21,6 @@ class YZVideoAllCommentCell: UITableViewCell {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
     
     
     // MARK: - Set up
@@ -40,10 +37,8 @@ class YZVideoAllCommentCell: UITableViewCell {
     }
     
     
-    
     // MARK: - Lazy Load
     
     private lazy var titleLabel = UILabel(text: "查看全部评论 >", textColor: BLUE, fontSize: 13)
-    
     
 }

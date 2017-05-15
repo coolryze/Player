@@ -57,6 +57,9 @@
 		60A2769B1EC9AFC0008DC40D /* UITabBarController+Rotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A2769A1EC9AFC0008DC40D /* UITabBarController+Rotation.swift */; };
 		60A2769E1EC9B050008DC40D /* UILable+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A2769C1EC9B050008DC40D /* UILable+Extension.swift */; };
 		60A2769F1EC9B050008DC40D /* UIView+Position.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A2769D1EC9B050008DC40D /* UIView+Position.swift */; };
+		60A276A11EC9C005008DC40D /* YZCommentEditController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A276A01EC9C005008DC40D /* YZCommentEditController.swift */; };
+		60A276A81EC9C27E008DC40D /* UIBarButtonItem+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A276A61EC9C27E008DC40D /* UIBarButtonItem+Extension.swift */; };
+		60A276A91EC9C27E008DC40D /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A276A71EC9C27E008DC40D /* UIViewController+Extension.swift */; };
 		60DDC1501EC5B86B00559000 /* CommonTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DDC14F1EC5B86B00559000 /* CommonTools.swift */; };
 		60DDC1791EC5BC2D00559000 /* Constraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DDC1561EC5BC2D00559000 /* Constraint.swift */; };
 		60DDC17A1EC5BC2D00559000 /* ConstraintAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DDC1571EC5BC2D00559000 /* ConstraintAttributes.swift */; };
@@ -208,6 +211,9 @@
 		60A2769A1EC9AFC0008DC40D /* UITabBarController+Rotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITabBarController+Rotation.swift"; sourceTree = "<group>"; };
 		60A2769C1EC9B050008DC40D /* UILable+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILable+Extension.swift"; sourceTree = "<group>"; };
 		60A2769D1EC9B050008DC40D /* UIView+Position.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Position.swift"; sourceTree = "<group>"; };
+		60A276A01EC9C005008DC40D /* YZCommentEditController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YZCommentEditController.swift; sourceTree = "<group>"; };
+		60A276A61EC9C27E008DC40D /* UIBarButtonItem+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem+Extension.swift"; sourceTree = "<group>"; };
+		60A276A71EC9C27E008DC40D /* UIViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		60DDC14F1EC5B86B00559000 /* CommonTools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonTools.swift; sourceTree = "<group>"; };
 		60DDC1561EC5BC2D00559000 /* Constraint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constraint.swift; sourceTree = "<group>"; };
 		60DDC1571EC5BC2D00559000 /* ConstraintAttributes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstraintAttributes.swift; sourceTree = "<group>"; };
@@ -327,6 +333,7 @@
 			children = (
 				6002A89E1EC72C2900C55FD5 /* YZVideoListController.swift */,
 				6002A89D1EC72C2900C55FD5 /* YZVideoController.swift */,
+				60A276A01EC9C005008DC40D /* YZCommentEditController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -551,6 +558,8 @@
 			children = (
 				60DDC14F1EC5B86B00559000 /* CommonTools.swift */,
 				6002A9141EC734D200C55FD5 /* UIImage+Extension.swift */,
+				60A276A61EC9C27E008DC40D /* UIBarButtonItem+Extension.swift */,
+				60A276A71EC9C27E008DC40D /* UIViewController+Extension.swift */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -855,6 +864,7 @@
 				60DDC17E1EC5BC2D00559000 /* ConstraintDSL.swift in Sources */,
 				60DDC1DA1EC5BF4A00559000 /* YYImage.m in Sources */,
 				60DDC1931EC5BC2D00559000 /* ConstraintView+Extensions.swift in Sources */,
+				60A276A11EC9C005008DC40D /* YZCommentEditController.swift in Sources */,
 				60DDC1861EC5BC2D00559000 /* ConstraintLayoutSupportDSL.swift in Sources */,
 				60DDC1D01EC5BF4A00559000 /* YYKVStorage.m in Sources */,
 				60DDC1CE1EC5BF4A00559000 /* YYCache.m in Sources */,
@@ -862,11 +872,13 @@
 				60DDC1941EC5BC2D00559000 /* ConstraintView.swift in Sources */,
 				60DDC17F1EC5BC2D00559000 /* ConstraintInsets.swift in Sources */,
 				60DDC1DF1EC5BF4A00559000 /* YYWebImageOperation.m in Sources */,
+				60A276A81EC9C27E008DC40D /* UIBarButtonItem+Extension.swift in Sources */,
 				608801181EC987E800E07EFB /* YZPlayerViewBottomTool.swift in Sources */,
 				60DDC1911EC5BC2D00559000 /* ConstraintRelatableTarget.swift in Sources */,
 				6002A8A71EC72C2900C55FD5 /* YZVideoController.swift in Sources */,
 				60DDC1921EC5BC2D00559000 /* ConstraintRelation.swift in Sources */,
 				60DDC18B1EC5BC2D00559000 /* ConstraintMakerPriortizable.swift in Sources */,
+				60A276A91EC9C27E008DC40D /* UIViewController+Extension.swift in Sources */,
 				6088011B1EC987E800E07EFB /* YZPlayerView.swift in Sources */,
 				60DDC1881EC5BC2D00559000 /* ConstraintMakerEditable.swift in Sources */,
 				60DDC17B1EC5BC2D00559000 /* ConstraintConfig.swift in Sources */,

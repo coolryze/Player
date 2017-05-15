@@ -8,13 +8,10 @@
 
 import UIKit
 
-
 class YZVideoCommentView: UIView {
-    
     
     var commentCallBack: (()->())?
     
-
 
     // MARK: - init
     
@@ -27,7 +24,6 @@ class YZVideoCommentView: UIView {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
     
     
     // MARK: - Set up
@@ -88,7 +84,6 @@ class YZVideoCommentView: UIView {
     }
     
     
-    
     // MARK: - Data
     
     @objc private func refreshData() {
@@ -104,7 +99,6 @@ class YZVideoCommentView: UIView {
     }
     
     
-    
     // MARK: - Action
     
     @objc private func comment() {
@@ -118,7 +112,6 @@ class YZVideoCommentView: UIView {
             self.y = kScreenHeight
         }
     }
-    
     
     
     // MARK: - Lazy Load
@@ -174,14 +167,11 @@ class YZVideoCommentView: UIView {
         return tableView
     }()
     
-    
 }
 
 
 
-
-// MARK: - TableView Delegate 
-
+// MARK: - TableView Delegate
 extension YZVideoCommentView: UITableViewDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -196,9 +186,7 @@ extension YZVideoCommentView: UITableViewDelegate {
 
 
 
-
 // MARK: - TableView Data Source
-
 extension YZVideoCommentView: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -211,4 +199,3 @@ extension YZVideoCommentView: UITableViewDataSource {
     }
 
 }
-

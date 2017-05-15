@@ -8,13 +8,11 @@
 
 import UIKit
 
-
 let recommendMediaWidth = (kScreenWidth-30-5)*0.5
 let recommendMediaHeight = recommendMediaWidth*(750/1334)
 
 
 class YZVideoRecommendMediaCell: UITableViewCell {
-
     
     // MARK: - init
 
@@ -27,7 +25,6 @@ class YZVideoRecommendMediaCell: UITableViewCell {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
     
     
     // MARK: - Set up
@@ -57,10 +54,7 @@ class YZVideoRecommendMediaCell: UITableViewCell {
             make.leading.bottom.trailing.equalTo(contentView)
 //            make.height.equalTo(recommendMediaHeight+40)
         }
-        
-        
     }
-    
     
     
     // MARK: - Lazy Load
@@ -83,23 +77,18 @@ class YZVideoRecommendMediaCell: UITableViewCell {
         return collectionView
     }()
     
-    
 }
 
 
 
-
 // MARK: - CollectionView Delegate
-
 extension YZVideoRecommendMediaCell: UICollectionViewDelegate {
 
 }
 
 
 
-
 // MARK: - CollectionView Data Source
-
 extension YZVideoRecommendMediaCell: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -115,12 +104,8 @@ extension YZVideoRecommendMediaCell: UICollectionViewDataSource {
 
 
 
-
-
 // MARK: - VideoRecommendMediaItem
-
 class VideoRecommendMediaItem: UICollectionViewCell {
-    
     
     // MARK: - init
     
@@ -133,7 +118,6 @@ class VideoRecommendMediaItem: UICollectionViewCell {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
     
     
     // MARK: - Set up
@@ -167,7 +151,6 @@ class VideoRecommendMediaItem: UICollectionViewCell {
     }
     
     
-    
     // MARK: - Lazy Load
     
     private lazy var mediaFrontView: UIImageView = {
@@ -186,6 +169,5 @@ class VideoRecommendMediaItem: UICollectionViewCell {
     }()
     
     private lazy var timeLabel = UILabel(text: "00:00", textColor: WHITE, fontSize: 10)
-    
     
 }

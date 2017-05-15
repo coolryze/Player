@@ -8,10 +8,8 @@
 
 import UIKit
 
-
 class YZVideoAuthorInfoCell: UITableViewCell {
 
-    
     // MARK: - init
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
@@ -23,7 +21,6 @@ class YZVideoAuthorInfoCell: UITableViewCell {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
     
     
     // MARK: - Set up
@@ -60,17 +57,14 @@ class YZVideoAuthorInfoCell: UITableViewCell {
             make.width.equalTo(50)
             make.height.equalTo(30)
         }
-        
     }
-    
     
     
     // MARK: - Action
     
     @objc private func clickFollowBtn() {
-        
+        print("follow")
     }
-    
     
     
     // MARK: - Lazy Load
@@ -95,6 +89,5 @@ class YZVideoAuthorInfoCell: UITableViewCell {
         followBtn.addTarget(self, action: #selector(self.clickFollowBtn), for: .touchUpInside)
         return followBtn
     }()
-    
 
 }

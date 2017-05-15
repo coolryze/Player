@@ -8,9 +8,7 @@
 
 import UIKit
 
-
 class YZVideoSelectionsCell: UITableViewCell {
-
     
     // MARK: - init
 
@@ -23,7 +21,6 @@ class YZVideoSelectionsCell: UITableViewCell {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
     
     
     // MARK: - Set up 
@@ -64,7 +61,6 @@ class YZVideoSelectionsCell: UITableViewCell {
     }
     
     
-    
     // MARK: - Lazy load
     
     private lazy var selectionsLabel = UILabel(text: "选集", textColor: BLUE, fontSize: 13)
@@ -88,23 +84,18 @@ class YZVideoSelectionsCell: UITableViewCell {
         return collectionView
     }()
     
-    
 }
 
 
 
-
 // MARK: - CollectionView Delegate
-
 extension YZVideoSelectionsCell: UICollectionViewDelegate {
 
 }
 
 
 
-
 // MARK: - CollectionView Data Source
-
 extension YZVideoSelectionsCell: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -125,7 +116,6 @@ extension YZVideoSelectionsCell: UICollectionViewDataSource {
 // MARK: - SelectionsItem
 
 class VideoSelectionsItem: UICollectionViewCell {
-    
     
     var index: Int = 0 {
         didSet {
@@ -152,7 +142,6 @@ class VideoSelectionsItem: UICollectionViewCell {
     }
     
     
-    
     // MARK: - init
     
     override init(frame: CGRect) {
@@ -164,7 +153,6 @@ class VideoSelectionsItem: UICollectionViewCell {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
     
     
     // MARK: - Set up
@@ -185,7 +173,6 @@ class VideoSelectionsItem: UICollectionViewCell {
     }
     
     
-    
     // MARK: - Lazy load
     
     private lazy var titleLabel = UILabel(text: "0", textColor: RGB(r: 0x32, g: 0x31, b: 0x36, alpha: 1), fontSize: 13)
@@ -196,7 +183,6 @@ class VideoSelectionsItem: UICollectionViewCell {
         backView.layer.cornerRadius = 30
         return backView
     }()
-    
     
 }
 
