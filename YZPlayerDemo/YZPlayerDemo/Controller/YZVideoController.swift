@@ -43,8 +43,8 @@ class YZVideoController: UIViewController {
         
         view.addSubview(commentView)
         
-//        view.addSubview(videoPlayView)
-//        videoPlayView.play()
+        view.addSubview(playerView)
+        playerView.play()
     }
     // MARK: - Action
     
@@ -58,13 +58,15 @@ class YZVideoController: UIViewController {
     
     // MARK: - Lazy load
     
-//    private lazy var playerView: VideoPlayView = {
-//        let frame = CGRect(x: 0, y: 0, width: kScreenWidth, height: VideoPlayViewHeight+clearY)
+    private lazy var playerView: VideoPlayView = {
+        let frame = CGRect(x: 0, y: 0, width: kScreenWidth, height: VideoPlayViewHeight+clearY)
 //        let playerView = VideoPlayView(frame: frame, urlString: "http://ogpxf29ue.bkt.clouddn.com/BATTLE_FIELD.mp4")
-//        playerView.delegate = self
-//        playerView.containerController = self
-//        return playerView
-//    }()
+        let playerView = VideoPlayView(frame: frame)
+        playerView.video = self.video
+        playerView.delegate = self
+        playerView.containerController = self
+        return playerView
+    }()
     
     private lazy var videoToolBar: YZVideoToolBar = {
         let videoToolBar = YZVideoToolBar(frame: CGRect(x: 0, y: VideoPlayViewHeight, width: kScreenWidth, height: 40))
@@ -188,10 +190,15 @@ extension YZVideoController: UITableViewDataSource {
 
 // MARK: - VideoPlayViewDelegate
 
-//extension YZVideoController: VideoPlayViewDelegate {
-//    
-//    func backAction() {
-//        navigationController?.popViewControllerAnimated(true)
-//    }
-//    
-//}
+extension YZVideoController: VideoPlayViewDelegate {
+    
+    func backAction() {
+        navigationController?.popViewController(animated: true)
+    }
+    
+    // 喜欢video
+    func likeAction(){
+    
+    }
+    
+}

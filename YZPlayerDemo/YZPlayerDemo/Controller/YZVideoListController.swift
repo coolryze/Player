@@ -122,7 +122,7 @@ extension YZVideoListController {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let videoController = YZVideoController()
-//        videoController.video = movViewModel.videos[indexPath.row]
+        videoController.video = viewModel.videoArr[indexPath.row]
         navigationController?.pushViewController(videoController, animated: true)
     }
     

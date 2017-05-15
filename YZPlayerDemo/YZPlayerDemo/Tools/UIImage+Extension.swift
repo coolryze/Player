@@ -147,7 +147,7 @@ extension UIImage {
         
         var compress:CGFloat = 0.9
         var data = UIImageJPEGRepresentation(newImage, compress)
-        print("origin: \(data?.count)")
+//        print("origin: \(data?.count)")
         while data?.count > maxLength && compress > 0.01 {
             compress -= 0.02
             data = UIImageJPEGRepresentation(newImage, compress)

@@ -9,7 +9,6 @@
 import UIKit
 import AVFoundation
 import MediaPlayer
-import SnapKit
 
 
 // 枚举
@@ -20,6 +19,7 @@ enum ControlType {
     case noneControl
 }
 
+let clearY: CGFloat = 10
 
 protocol VideoPlayViewDelegate: NSObjectProtocol {
     
@@ -41,7 +41,7 @@ class VideoPlayView: UIView {
     weak var delegate: VideoPlayViewDelegate?
     weak var containerController: UIViewController?
 
-    var video: MUMovVideo? {
+    var video: YZVideo? {
         didSet {
             playViewTopTool.title = video?.title
         }
@@ -114,7 +114,7 @@ class VideoPlayView: UIView {
     }
     
     deinit {
-        printLog("VideoPlayView deinit")
+        print("VideoPlayView deinit")
     }
     
     
@@ -248,7 +248,7 @@ class VideoPlayView: UIView {
         // 如果移动的距离过于小, 就判断为没有移动
         let tempPoint = ((touches as NSSet).anyObject() as AnyObject).location(in: self)
         if (fabs((tempPoint.x) - self.touchBeginPoint.x) < 15) && (fabs((tempPoint.y) - self.touchBeginPoint.y) < 15) {
-            printLog("移动距离过小")
+            print("移动距离过小")
             return
         } else {
             //self.hasMoved = true
@@ -321,11 +321,11 @@ class VideoPlayView: UIView {
     
     // MARK: - Operation
     
-    func changeVideo(video: MUMovVideo) {
+    func changeVideo(video: YZVideo) {
         self.video = video
         
         guard let url = URL(string: video.play_address!) else {
-            printLog("url 失败")
+            print("url 失败")
             return
         }
         self.pause()
@@ -339,7 +339,7 @@ class VideoPlayView: UIView {
     
     private func setupPlayerItem() {
         guard let url = URL(string: video!.play_address!) else {
-            printLog("url 失败")
+            print("url 失败")
             return
         }
         playerItem = AVPlayerItem(url: url)
@@ -350,7 +350,7 @@ class VideoPlayView: UIView {
         setupPlayerItem()
         
         if playerItem == nil {
-            printLog("playerItem nil")
+            print("playerItem nil")
             return
         }
         player.replaceCurrentItem(with: playerItem)
@@ -366,7 +366,7 @@ class VideoPlayView: UIView {
         self.playBtn.isSelected = false
         self.player.pause()
         self.playTime?.fireDate = Date.distantFuture
-        printLog("暂停")
+        print("暂停")
     }
 
     // 继续播放
@@ -375,7 +375,7 @@ class VideoPlayView: UIView {
         self.playBtn.isSelected = true
         self.player.play()
         self.playTime?.fireDate = Date()
-        printLog("继续播放")
+        print("继续播放")
     }
     
     
@@ -401,7 +401,7 @@ class VideoPlayView: UIView {
     
     // 播放完毕
     @objc private func playEnd(sender: AnyObject) {
-        printLog("播放结束")
+        print("播放结束")
 //        self.playTime?.invalidate()
         self.pause()
         let cmTime = CMTimeMake(Int64(0), 1)
@@ -409,12 +409,12 @@ class VideoPlayView: UIView {
     }
     
     @objc private func resignActiveNotification() {
-        printLog("进入后台")
+        print("进入后台")
         self.pause()
     }
     
     @objc private func becomeActiveNotification() {
-        printLog("返回前台")
+        print("返回前台")
         if self.isPause == false {
             self.goonPlay()
         }
@@ -472,7 +472,7 @@ class VideoPlayView: UIView {
     // 开始播放
     func startPlay() {
         self.isFisrtConfig = false
-        printLog("startPlay")
+        print("startPlay")
         // 获取总的播放时间
         let durationTime = Int(self.playerItem!.duration.value)
         let timeScale = Int(self.playerItem!.duration.timescale)
@@ -640,15 +640,15 @@ extension VideoPlayView {
             self.playViewBottomTool.progressValue = timeInterval / Float(totalDuration)
         }  else if keyPath == "status" {
             if self.player.status == .failed {
-                printLog("Failed")
+                print("Failed")
             } else if self.player.status == .readyToPlay {
-                printLog("ReadyToPlay")
+                print("ReadyToPlay")
                 if self.isFisrtConfig == true {
                     self.startPlay()
                     playBtn.isSelected = true
                 }
             } else if self.player.status == .unknown {
-                printLog("Unknown")
+                print("Unknown")
             }
         }
     }
