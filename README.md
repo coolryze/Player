@@ -4,6 +4,8 @@
 [![Platform](https://img.shields.io/badge/platform-iOS-lightgrey.svg)](https://www.apple.com/nl/ios/)&nbsp;
 [![Support](https://img.shields.io/badge/support-iOS%207%2B%20-blue.svg?style=flat)](https://www.apple.com/nl/ios/)&nbsp;
 
+![Demo](https://raw.github.com/coolryze/YZPlayer/master/YZPlayerDemo/Demo.gif)
+
 A simple video player for iOS, based on AVPlayer. Support the vertical, horizontal screen. Support adjust volume, screen brigtness and video progress. 
 
 
