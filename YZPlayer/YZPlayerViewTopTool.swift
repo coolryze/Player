@@ -12,7 +12,7 @@ protocol YZPlayerViewTopToolDelegate: NSObjectProtocol {
     
     func back()
  
-    func like()
+    func like(isLike: Bool)
     
 }
 
@@ -38,6 +38,10 @@ class YZPlayerViewTopTool: UIView {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    deinit {
+        printLog("YZPlayerViewTopTool deinit")
     }
     
     
@@ -81,11 +85,17 @@ class YZPlayerViewTopTool: UIView {
     }
     
     @objc fileprivate func clickLikeBtn() {
-        if likeBtn.isSelected == false {
-            if delegate != nil {
-                delegate?.like()
-            }
+        let isLike = likeBtn.isSelected
+        likeBtn.isSelected = !isLike
+        if delegate != nil {
+            delegate?.like(isLike: !isLike)
         }
+        let animation: CAKeyframeAnimation = CAKeyframeAnimation()
+        animation.keyPath = "transform.scale"
+        animation.values = [1.0, 1.3, 0.9, 1.0]
+        animation.duration = 0.25
+        animation.calculationMode = kCAAnimationCubic
+        likeBtn.layer.add(animation, forKey: nil)
     }
     
     func likeBtnSelect(selected: Bool) {
@@ -99,7 +109,7 @@ class YZPlayerViewTopTool: UIView {
     
     private lazy var backBtn: UIButton = {
         let backBtn = UIButton()
-        backBtn.setImage(YZPlayerImage(named: "video_back"), for: UIControlState())
+        backBtn.setImage(YZPlayerImage(named: "video_back"), for: .normal)
         backBtn.addTarget(self, action: #selector(self.clickBackBtn), for: .touchUpInside)
         return backBtn
     }()
@@ -108,7 +118,7 @@ class YZPlayerViewTopTool: UIView {
     
     private lazy var likeBtn: UIButton = {
         let likeBtn = UIButton()
-        likeBtn.setImage(YZPlayerImage(named: "video_like"), for: UIControlState())
+        likeBtn.setImage(YZPlayerImage(named: "video_like"), for: .normal)
         likeBtn.setImage(YZPlayerImage(named: "video_like_sel"), for: .selected)
         likeBtn.addTarget(self, action: #selector(self.clickLikeBtn), for: .touchUpInside)
         return likeBtn

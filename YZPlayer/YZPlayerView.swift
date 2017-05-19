@@ -26,8 +26,8 @@ protocol YZPlayerViewDelegate: NSObjectProtocol {
     // 返回
     func backAction()
     
-    // 喜欢video
-    func likeAction()
+    // 喜欢
+    func likeAction(isLike: Bool)
     
 }
 
@@ -36,8 +36,8 @@ class YZPlayerView: UIView {
     
     // MARK: - Property
     
-    weak var delegate: YZPlayerViewDelegate?
-    weak var containerController: UIViewController?
+    weak var delegate: YZPlayerViewDelegate? // 代理
+    weak var containerController: UIViewController! // 装playerView的父容器
 
     var video: YZVideo? {
         didSet {
@@ -67,8 +67,6 @@ class YZPlayerView: UIView {
     
     // Player Property
     
-//    var urlString: String?
-
     fileprivate var playerItem: AVPlayerItem?
 
     fileprivate lazy var player: AVPlayer = {
@@ -99,7 +97,8 @@ class YZPlayerView: UIView {
     
     // MARK: - init
     
-    override init(frame: CGRect) {
+    init() {
+        let frame = CGRect(x: 0, y: 0, width: kScreenWidth, height: PlayerViewHeight+clearY)
         super.init(frame: frame)
         
         setupUI()
@@ -110,7 +109,7 @@ class YZPlayerView: UIView {
     }
     
     deinit {
-        print("YZPlayerView deinit")
+        printLog("YZPlayerView deinit")
     }
     
     
@@ -201,7 +200,7 @@ class YZPlayerView: UIView {
     }
     
     // 隐藏或者显示上下栏手势
-    func hideOrShowBtnClick(sender: AnyObject?) {
+    private func hideOrShowBtnClick(sender: AnyObject?) {
         // 防止点击底部栏视图隐藏
         let point = sender!.location(in: self)
         var subY =  self.frame.size.height - self.bottomTool.frame.size.height
@@ -241,7 +240,7 @@ class YZPlayerView: UIView {
         // 如果移动的距离过于小, 就判断为没有移动
         let tempPoint = ((touches as NSSet).anyObject() as AnyObject).location(in: self)
         if (fabs((tempPoint.x) - self.touchBeginPoint.x) < 15) && (fabs((tempPoint.y) - self.touchBeginPoint.y) < 15) {
-            print("移动距离过小")
+            printLog("移动距离过小")
             return
         } else {
             //self.hasMoved = true
@@ -285,7 +284,6 @@ class YZPlayerView: UIView {
             }
         }
     }
-
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesEnded(touches, with: event)
@@ -313,11 +311,12 @@ class YZPlayerView: UIView {
     
     // MARK: - Operation
     
+    // 切换视频
     func changeVideo(video: YZVideo) {
         self.video = video
         
-        guard let url = URL(string: video.play_address!) else {
-            print("url 失败")
+        guard let url = URL(string: video.play_address) else {
+            printLog("url 失败")
             return
         }
         self.pause()
@@ -330,19 +329,20 @@ class YZPlayerView: UIView {
     }
     
     private func setupPlayerItem() {
-        guard let url = URL(string: video!.play_address!) else {
-            print("url 失败")
+        guard let url = URL(string: video!.play_address) else {
+            printLog("url 失败")
             return
         }
         playerItem = AVPlayerItem(url: url)
     }
     
+    // 播放
     func play() {
         // 初始化PlayerItem
         setupPlayerItem()
         
         if playerItem == nil {
-            print("playerItem nil")
+            printLog("playerItem nil")
             return
         }
         player.replaceCurrentItem(with: playerItem)
@@ -358,7 +358,7 @@ class YZPlayerView: UIView {
         self.playBtn.isSelected = false
         self.player.pause()
         self.playTime?.fireDate = Date.distantFuture
-        print("暂停")
+        printLog("暂停")
     }
 
     // 继续播放
@@ -367,7 +367,7 @@ class YZPlayerView: UIView {
         self.playBtn.isSelected = true
         self.player.play()
         self.playTime?.fireDate = Date()
-        print("继续播放")
+        printLog("继续播放")
     }
     
     
@@ -392,7 +392,7 @@ class YZPlayerView: UIView {
     
     // 播放完毕
     @objc private func playEnd(sender: AnyObject) {
-        print("播放结束")
+        printLog("播放结束")
 //        self.playTime?.invalidate()
         self.pause()
         let cmTime = CMTimeMake(Int64(0), 1)
@@ -400,12 +400,12 @@ class YZPlayerView: UIView {
     }
     
     @objc private func resignActiveNotification() {
-        print("进入后台")
+        printLog("进入后台")
         self.pause()
     }
     
     @objc private func becomeActiveNotification() {
-        print("返回前台")
+        printLog("返回前台")
         if self.isPause == false {
             self.goonPlay()
         }
@@ -445,7 +445,7 @@ class YZPlayerView: UIView {
         self.timeSheet.timeStr = String(format: "%@ / %@", tempTime,totalTime)
     }
     
-    //MARK: - 用来控制移动过程中计算手指划过的时间
+    // MARK: - 用来控制移动过程中计算手指划过的时间
     private func moveProgressControllWithTempPoint(_ tempPoint: CGPoint) -> Float {
         var tempVaule: Float = self.currentTime + 90 * Float((tempPoint.x - self.touchBeginPoint.x) / kScreenWidth)
         if tempVaule >= self.duration {
@@ -460,9 +460,9 @@ class YZPlayerView: UIView {
     // MARK: - Func
     
     // 开始播放
-    func startPlay() {
+    fileprivate func startPlay() {
         self.isFisrtConfig = false
-        print("startPlay")
+        printLog("startPlay")
         // 获取总的播放时间
         let durationTime = Int(self.playerItem!.duration.value)
         let timeScale = Int(self.playerItem!.duration.timescale)
@@ -500,7 +500,7 @@ class YZPlayerView: UIView {
         return String(format: "%02d:%02d", minutes, seconds)
     }
     
-    func destoryAVPlayer() {
+    fileprivate func destoryAVPlayer() {
         self.playTime?.invalidate()
 //        self.player.pause()
 //        self.player.replaceCurrentItemWithPlayerItem(nil)
@@ -513,6 +513,7 @@ class YZPlayerView: UIView {
         self.playerItem?.removeObserver(self, forKeyPath: "status")
     }
     
+    // 外界其他位置点亮了喜欢Btn(当前框架用不上，配合一个大型视频模块其他地方有喜欢按钮时使用)
     func topToolLikeBtnSelect(selected: Bool) {
         topTool.likeBtnSelect(selected: selected)
     }
@@ -550,7 +551,7 @@ class YZPlayerView: UIView {
         let playBtn = UIButton(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
         playBtn.centerX = self.centerX
         playBtn.centerY = self.centerY - clearY*0.5
-        playBtn.setImage(YZPlayerImage(named: "video_play_small"), for: UIControlState())
+        playBtn.setImage(YZPlayerImage(named: "video_play_small"), for: .normal)
         playBtn.setImage(YZPlayerImage(named: "video_pause_small"), for: .selected)
         playBtn.addTarget(self, action: #selector(self.clickPlayBtn), for: .touchUpInside)
         return playBtn
@@ -558,7 +559,7 @@ class YZPlayerView: UIView {
     
     fileprivate lazy var backBtn: UIButton = {
         let backBtn = UIButton(frame: CGRect(x: 5, y: 22, width: 40, height: 40))
-        backBtn.setImage(YZPlayerImage(named: "video_back"), for: UIControlState())
+        backBtn.setImage(YZPlayerImage(named: "video_back"), for: .normal)
         backBtn.addTarget(self, action: #selector(self.clickBackBtn), for: .touchUpInside)
         return backBtn
     }()
@@ -597,9 +598,9 @@ extension YZPlayerView: YZPlayerViewTopToolDelegate {
         }
     }
     
-    func like() {
+    func like(isLike: Bool) {
         if delegate != nil {
-            delegate?.likeAction()
+            delegate?.likeAction(isLike: isLike)
         }
     }
     
@@ -622,15 +623,15 @@ extension YZPlayerView {
             self.bottomTool.progressValue = timeInterval / Float(totalDuration)
         }  else if keyPath == "status" {
             if self.player.status == .failed {
-                print("Failed")
+                printLog("Failed")
             } else if self.player.status == .readyToPlay {
-                print("ReadyToPlay")
+                printLog("ReadyToPlay")
                 if self.isFisrtConfig == true {
                     self.startPlay()
                     playBtn.isSelected = true
                 }
             } else if self.player.status == .unknown {
-                print("Unknown")
+                printLog("Unknown")
             }
         }
     }
@@ -682,19 +683,23 @@ extension YZPlayerView {
             backgroundView.height -= clearY
             playerLayer.frame = self.frame
             playerLayer.frame.size.height -= clearY
-            containerController?.view.addSubview(self)
-            self.snp.removeConstraints()
-            self.snp.makeConstraints({ (make) in
-                make.top.leading.trailing.equalTo(self.containerController!.view)
-                make.height.equalTo(PlayerViewHeight+clearY)
-            })
+            containerController.view.addSubview(self)
+            
+            self.translatesAutoresizingMaskIntoConstraints = false
+            self.removeConstraints(self.constraints)
+            let top = NSLayoutConstraint(item: self, attribute: .top, relatedBy: .equal, toItem: self.containerController.view, attribute: .top, multiplier: 1, constant: 0)
+            let leading = NSLayoutConstraint(item: self, attribute: .leading, relatedBy: .equal, toItem: self.containerController.view, attribute: .leading, multiplier: 1, constant: 0)
+            let trailing = NSLayoutConstraint(item: self, attribute: .trailing, relatedBy: .equal, toItem: self.containerController.view, attribute: .trailing, multiplier: 1, constant: 0)
+            let height = NSLayoutConstraint(item: self, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 0, constant: PlayerViewHeight+clearY)
+            containerController.view.addConstraints([top, leading, trailing, height])
+            
             self.bottomTool.frame = CGRect(x: 0, y: self.height-50-clearY, width: self.width, height: 50+clearY)
             self.bottomTool.setupFrame(isFullScreen: isFullScreen)
             self.topTool.frame = CGRect(x: 0, y: 0, width: self.width, height: 64)
             self.topTool.setupFrame(isFullScreen: isFullScreen)
             self.playBtn.centerX = self.centerX
             self.playBtn.centerY = self.centerY - clearY
-            self.playBtn.setImage(YZPlayerImage(named: "video_play_small"), for: UIControlState())
+            self.playBtn.setImage(YZPlayerImage(named: "video_play_small"), for: .normal)
             self.playBtn.setImage(YZPlayerImage(named: "video_pause_small"), for: .selected)
             self.backBtn.isHidden = false
             self.timeSheet.center = CGPoint(x: self.width*0.5, y: (self.height-clearY)*0.5)
@@ -706,18 +711,22 @@ extension YZPlayerView {
                 self.frame = CGRect(x: 0, y: 0, width: kScreenHeight, height: kScreenWidth)
                 backgroundView.frame = self.frame
                 playerLayer.frame = self.frame
-                containerController?.view.addSubview(self)
-                self.snp.removeConstraints()
-                self.snp.makeConstraints({ (make) in
-                    make.size.equalTo(CGSize(width: kScreenHeight, height: kScreenWidth))
-                    make.center.equalTo(self.containerController!.view)
-                })
+                containerController.view.addSubview(self)
+                
+                self.translatesAutoresizingMaskIntoConstraints = false
+                self.removeConstraints(self.constraints)
+                let width = NSLayoutConstraint(item: self, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 0, constant: kScreenHeight)
+                let height = NSLayoutConstraint(item: self, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 0, constant: kScreenWidth)
+                let centerX = NSLayoutConstraint(item: self, attribute: .centerX, relatedBy: .equal, toItem: self.superview!, attribute: .centerX, multiplier: 1, constant: 0)
+                let centerY = NSLayoutConstraint(item: self, attribute: .centerY, relatedBy: .equal, toItem: self.superview!, attribute: .centerY, multiplier: 1, constant: 0)
+                containerController.view.addConstraints([width, height, centerX, centerY])
+                
                 self.bottomTool.frame = CGRect(x: 0, y: self.height-50, width: self.width, height: 50)
                 self.bottomTool.setupFrame(isFullScreen: isFullScreen)
                 self.topTool.frame = CGRect(x: 0, y: 0, width: self.width, height: 64)
                 self.topTool.setupFrame(isFullScreen: isFullScreen)
                 self.playBtn.center = self.center
-                self.playBtn.setImage(YZPlayerImage(named: "video_play"), for: UIControlState())
+                self.playBtn.setImage(YZPlayerImage(named: "video_play"), for: .normal)
                 self.playBtn.setImage(YZPlayerImage(named: "video_pause"), for: .selected)
                 self.backBtn.isHidden = true
                 self.timeSheet.center = CGPoint(x: self.width*0.5, y: self.height*0.5)
@@ -736,7 +745,7 @@ extension YZPlayerView {
         UIView.commitAnimations()
     }
     
-    func getOrientation(_ orientation: UIInterfaceOrientation) -> CGAffineTransform {
+    fileprivate func getOrientation(_ orientation: UIInterfaceOrientation) -> CGAffineTransform {
         if orientation == .landscapeLeft {
             return CGAffineTransform(rotationAngle: CGFloat(-Double.pi/2))
         } else if orientation == .landscapeRight {

@@ -28,7 +28,7 @@ let BLUE = RGB(r: 0x00, g: 0x56, b: 0xff, alpha: 1)
 private let ResourcePath = Bundle.main.path(forResource: "Resource", ofType: "bundle")
 
 
-// MARK: - Func
+// MARK: - Function
 
 // 加载 Resource.bundle 存放的图片
 func YZPlayerImage(named: String) -> UIImage? {

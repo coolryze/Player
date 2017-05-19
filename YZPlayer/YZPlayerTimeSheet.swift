@@ -38,6 +38,10 @@ class YZPlayerTimeSheet: UIView {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    deinit {
+        printLog("YZPlayerTimeSheet deinit")
+    }
 
     
     // MARK: - Set up

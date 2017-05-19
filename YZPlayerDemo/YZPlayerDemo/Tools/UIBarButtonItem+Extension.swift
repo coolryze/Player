@@ -21,17 +21,17 @@ extension UIBarButtonItem {
         
         if imageName != nil
         {
-            button.setImage(UIImage(named: imageName!), for: UIControlState())
+            button.setImage(UIImage(named: imageName!), for: .normal)
 //            button.setImage(UIImage(named: "\(imageName!)_highlighted"), forState: UIControlState.Highlighted)
             button.imageEdgeInsets = UIEdgeInsets(top: 0, left: -10, bottom: 0, right: 0)
         }
         
         if title != nil
         {
-            button.setTitle(title!, for: UIControlState())
+            button.setTitle(title!, for: .normal)
             // 设置字体的大小颜色
             button.titleLabel?.font = UIFont.systemFont(ofSize: 13)
-            button.setTitleColor(BLACK, for: UIControlState())
+            button.setTitleColor(BLACK, for: .normal)
             button.setTitleColor(BLUE, for: .highlighted)
             button.setTitleColor(RGB(r: 0x66, g: 0x66, b: 0x66, alpha: 0.3), for: .disabled)
         }

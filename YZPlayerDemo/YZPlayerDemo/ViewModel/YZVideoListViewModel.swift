@@ -11,7 +11,7 @@ import UIKit
 class YZVideoListViewModel: NSObject {
 
     // video 数组
-    var videoArr = [YZVideo]()
+    var videoArr = [YZDemoVideo]()
     
     // 舒适化数据
     func setupData(success: ()->Void) {
@@ -25,7 +25,7 @@ class YZVideoListViewModel: NSObject {
             
             let dataArray = dataDict["data"] as! Array<[String : Any]>
             for dict in dataArray {
-                let video = YZVideo(dict: dict)
+                let video = YZDemoVideo(dict: dict)
                 videoArr.append(video)
             }
             success()

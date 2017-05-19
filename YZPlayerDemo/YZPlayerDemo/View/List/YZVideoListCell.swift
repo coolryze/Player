@@ -10,17 +10,17 @@ import UIKit
 
 class YZVideoListCell: UITableViewCell {
     
-    var video: YZVideo? {
+    var video: YZDemoVideo? {
         didSet {
-            frontCoverView.yy_setImage(with: URL(string: video!.poster!), placeholder: UIImage(named: PLACEHOLDER_VIDEO))
+            frontCoverView.yy_setImage(with: URL(string: video!.poster), placeholder: UIImage(named: PLACEHOLDER_VIDEO))
             lengthLabel.text = getTimeLengthStr(length: video!.length)
-            typeLabel.text = video?.typeString
+            typeLabel.text = video!.typeString
 //            timeLabel.text = getTimeLengthStr(length: video!.length)
             timeLabel.text = convertToDate(time: video!.time)
             watchNumberLabel.text = "\(video!.view_number)"
             commentNumberLabel.text = "\(video!.comment_number)"
-            titleLabel.text = video?.title
-            detailsLabel.text = video?.detail
+            titleLabel.text = video!.title
+            detailsLabel.text = video!.detail
         }
     }
     

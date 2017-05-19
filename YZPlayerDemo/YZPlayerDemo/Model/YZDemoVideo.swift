@@ -1,5 +1,5 @@
 //
-//  YZVideo.swift
+//  YZDemoVideo.swift
 //  YZPlayerDemo
 //
 //  Created by heyuze on 2017/5/12.
@@ -8,21 +8,21 @@
 
 import UIKit
 
-class YZVideo: NSObject {
+class YZDemoVideo: YZVideo {
 
+//    var play_address: String?
+    
+//    var title: String?
+    
     var video_id: Int = 0
     
-    var poster: String?
+    var poster: String = ""
     
-    var play_address: String?
+    var detail: String = ""
     
-    var title: String?
+    var director: String = ""
     
-    var detail: String?
-    
-    var director: String?
-    
-    var actor: String?
+    var actor: String = ""
     
     var comment_number: Int = 0
     
@@ -75,8 +75,8 @@ class YZVideo: NSObject {
     
     // MARK: - init
     
-    init(dict: [String : Any]) {
-        super.init()
+    override init(dict: [String : Any]) {
+        super.init(dict: dict)
         
         setValuesForKeys(dict)
     }

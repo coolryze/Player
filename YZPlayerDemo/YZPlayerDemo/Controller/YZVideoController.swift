@@ -10,7 +10,7 @@ import UIKit
 
 class YZVideoController: UIViewController {
 
-    var video: YZVideo?
+    var video: YZDemoVideo?
     
     override var shouldAutorotate : Bool {
         return false
@@ -63,9 +63,7 @@ class YZVideoController: UIViewController {
     // MARK: - Lazy load
     
     private lazy var playerView: YZPlayerView = {
-        let frame = CGRect(x: 0, y: 0, width: kScreenWidth, height: PlayerViewHeight+clearY)
-//        let playerView = VideoPlayView(frame: frame, urlString: "http://ogpxf29ue.bkt.clouddn.com/BATTLE_FIELD.mp4")
-        let playerView = YZPlayerView(frame: frame)
+        let playerView = YZPlayerView()
         playerView.video = self.video
         playerView.delegate = self
         playerView.containerController = self
@@ -201,8 +199,8 @@ extension YZVideoController: YZPlayerViewDelegate {
     }
     
     // 喜欢video
-    func likeAction() {
-        print("like")
+    func likeAction(isLike: Bool) {
+        isLike ? print("liked") : print("dislike")
     }
     
 }

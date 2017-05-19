@@ -56,6 +56,10 @@ class YZPlayerViewBottomTool: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    deinit {
+        printLog("YZPlayerViewBottomTool deinit")
+    }
+    
     
     // MARK: - Set up
     
@@ -80,7 +84,7 @@ class YZPlayerViewBottomTool: UIView {
             backgroundView.isHidden = true
             fullScreenBtn.isHidden = true
             
-            playSlider.setThumbImage(YZPlayerImage(named: "video_sliderControl"), for: UIControlState())
+            playSlider.setThumbImage(YZPlayerImage(named: "video_sliderControl"), for: .normal)
             backgroundView.frame = CGRect.zero
             timeLabel.frame = CGRect(x: 25, y: 15, width: timeLabel.width, height: timeLabel.height)
             durationLabel.frame = CGRect(x: self.width-25-durationLabel.width, y: 15, width: durationLabel.width, height: durationLabel.height)
@@ -97,7 +101,7 @@ class YZPlayerViewBottomTool: UIView {
             fullScreenBtn.isHidden = false
             backgroundView.isHidden = false
             
-            playSlider.setThumbImage(YZPlayerImage(named: "video_sliderControl_small"), for: UIControlState())
+            playSlider.setThumbImage(YZPlayerImage(named: "video_sliderControl_small"), for: .normal)
             backgroundView.image = YZPlayerImage(named: "video_bottomBackground_small")
             backgroundView.frame = CGRect(x: 0, y: 0, width: self.width, height: self.height-clearY)
             loadProgress.frame = CGRect(x: 0, y: self.height-loadProgress.height-clearY, width: self.width, height: loadProgress.height)
@@ -129,6 +133,7 @@ class YZPlayerViewBottomTool: UIView {
     
     private lazy var durationLabel: UILabel = {
         let durationLabel = UILabel(text: "00:00:00", textColor: WHITE, fontSize: 10)
+        durationLabel.textAlignment = .right
         durationLabel.sizeToFit()
         return durationLabel
     }()
@@ -136,7 +141,7 @@ class YZPlayerViewBottomTool: UIView {
     lazy var playSlider: UISlider = {
         let playSlider = UISlider()
         playSlider.isContinuous = false
-        playSlider.setThumbImage(YZPlayerImage(named: "video_sliderControl_small"), for: UIControlState())
+        playSlider.setThumbImage(YZPlayerImage(named: "video_sliderControl_small"), for: .normal)
         playSlider.minimumTrackTintColor = BLUE
         playSlider.maximumTrackTintColor = UIColor.clear
         playSlider.maximumValue = 1.0
@@ -154,7 +159,7 @@ class YZPlayerViewBottomTool: UIView {
     
     private lazy var fullScreenBtn: UIButton = {
         let fullScreenBtn = UIButton()
-        fullScreenBtn.setImage(YZPlayerImage(named: "video_fullScreen"), for: UIControlState())
+        fullScreenBtn.setImage(YZPlayerImage(named: "video_fullScreen"), for: .normal)
         fullScreenBtn.addTarget(self, action: #selector(self.clickFullScreenBtn), for: .touchUpInside)
         return fullScreenBtn
     }()
