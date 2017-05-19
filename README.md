@@ -1,5 +1,5 @@
 ##YZPlayer
-===
+
 [![License MIT](https://img.shields.io/badge/license-MIT-green.svg?style=flat)](https://raw.githubusercontent.com/coolryze/YZPlayer/master/LICENSE)&nbsp;
 [![Platform](https://img.shields.io/badge/platform-iOS-lightgrey.svg)](https://www.apple.com/nl/ios/)&nbsp;
 [![Support](https://img.shields.io/badge/support-iOS%207%2B%20-blue.svg?style=flat)](https://www.apple.com/nl/ios/)&nbsp;
@@ -8,7 +8,7 @@ A simple video player for iOS, based on AVPlayer. Support the vertical, horizont
 
 
 ##Features
-===
+
 - Rotate automatically according to the screen.
 - Support for horizontal and vertical play mode.
 - Support play with online URL video file.
@@ -18,12 +18,12 @@ A simple video player for iOS, based on AVPlayer. Support the vertical, horizont
 
 
 ##Requirements
-==============
+
 This library requires `iOS 7.0+`, `Swift 3` and `Xcode 8.0+`.
 
 
 ##Usage
-==============
+
 ####1. Add Key `View controller-based status bar appearance` value `NO` to `info.plist`.
 
 ####2. In your ViewController, override `shouldAutorotate`.
@@ -66,5 +66,5 @@ func likeAction(isLike: Bool) {
 
 
 ##License
-==============
+
 YZPlayer is provided under the MIT license. See LICENSE file for details.
