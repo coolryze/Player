@@ -49,21 +49,23 @@ playerView.play()
 
 4. Implements YZPlayerViewDelegate.
 
-  - click `back` button
- 
 ```swift
+// click backButton
 func backAction() {
     // _ = navigationController?.popViewController(animated: true)
 }
-```
 
-  - click `like` button
-
-```swift
+// click likeButton
 func likeAction(isLike: Bool) {
     // isLike ? print("like") : print("dislike")
 }
 ```
+
+
+# Installation
+
+1. Download all the files in the YYPlayer subdirectory.
+2. Add the source files to your Xcode project.
 
 
 # License
