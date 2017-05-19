@@ -37,8 +37,7 @@ fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
 
 extension UIImage {
     
-    class func getScreenImage() -> UIImage
-    {
+    class func getScreenImage() -> UIImage {
         let window = UIApplication.shared.keyWindow
         
         // 开启图片类型上下文
@@ -56,7 +55,6 @@ extension UIImage {
         return image!
     }
 
-    
 
     /**
     通过color获取纯色图片
@@ -121,7 +119,7 @@ extension UIImage {
 
 extension UIImage {
     
-    ///对指定图片进行拉伸
+    // 对指定图片进行拉伸
     func resizableImage(name: String) -> UIImage {
         
         var normal = UIImage(named: name)!
@@ -220,5 +218,6 @@ extension UIImage {
         let result = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         return result!
-    }    
+    }
+    
 }

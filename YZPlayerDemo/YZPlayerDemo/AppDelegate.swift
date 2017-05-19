@@ -17,11 +17,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
         let videoListController = YZVideoListController()
-        let rootController = UINavigationController(rootViewController: videoListController)
+        let navigationController = UINavigationController(rootViewController: videoListController)
         
         window = UIWindow()
         window?.backgroundColor = UIColor.white
-        window?.rootViewController = rootController
+        window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
         
         return true

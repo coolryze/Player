@@ -17,7 +17,7 @@ class YZVideoController: UIViewController {
     }
     
     deinit {
-        print("YZVideoController")
+        print("YZVideoController deinit")
     }
     
     
@@ -195,6 +195,7 @@ extension YZVideoController: UITableViewDataSource {
 extension YZVideoController: YZPlayerViewDelegate {
     
     func backAction() {
+        print("back")
         navigationController?.popViewController(animated: true)
     }
     

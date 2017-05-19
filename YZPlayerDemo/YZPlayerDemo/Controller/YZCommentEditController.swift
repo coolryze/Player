@@ -11,7 +11,7 @@ import UIKit
 class YZCommentEditController: UIViewController {
 
     deinit {
-        print("VideoCommentEditController deinit")
+        print("YZCommentEditController deinit")
         NotificationCenter.default.removeObserver(self)
     }
     

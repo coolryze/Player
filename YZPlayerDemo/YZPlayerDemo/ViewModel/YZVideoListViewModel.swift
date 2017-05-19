@@ -13,7 +13,7 @@ class YZVideoListViewModel: NSObject {
     // video 数组
     var videoArr = [YZDemoVideo]()
     
-    // 舒适化数据
+    // 初始化数据
     func setupData(success: ()->Void) {
         let path = Bundle.main.bundlePath
         let filePath = path+"/video"

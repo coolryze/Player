@@ -17,7 +17,7 @@ class YZVideoListController: UIViewController, UITableViewDelegate, UITableViewD
     
     
     deinit {
-        print("MUMovController deinit")
+        print("YZVideoListController deinit")
     }
 
     override func viewWillAppear(_ animated: Bool) {

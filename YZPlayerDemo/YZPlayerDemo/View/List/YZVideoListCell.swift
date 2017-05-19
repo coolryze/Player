@@ -12,7 +12,7 @@ class YZVideoListCell: UITableViewCell {
     
     var video: YZDemoVideo? {
         didSet {
-            frontCoverView.yy_setImage(with: URL(string: video!.poster), placeholder: UIImage(named: PLACEHOLDER_VIDEO))
+            frontCoverView.yy_setImage(with: URL(string: video!.poster), placeholder: UIImage(named: PLACEHOLDER_VIDEO), options: [.showNetworkActivity, .setImageWithFadeAnimation, .progressiveBlur])
             lengthLabel.text = getTimeLengthStr(length: video!.length)
             typeLabel.text = video!.typeString
 //            timeLabel.text = getTimeLengthStr(length: video!.length)

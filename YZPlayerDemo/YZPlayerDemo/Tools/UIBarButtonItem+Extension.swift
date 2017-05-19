@@ -8,13 +8,10 @@
 
 import UIKit
 
-
 extension UIBarButtonItem {
     
-    
     // 分类里 使用遍历构造器
-    convenience init(imageName: String? = nil, title: String? = nil, target: AnyObject?, action: Selector)
-    {
+    convenience init(imageName: String? = nil, title: String? = nil, target: AnyObject?, action: Selector) {
         self.init()  //遍历构造器必须调用自己的init
         
         let button = UIButton()
@@ -42,6 +39,5 @@ extension UIBarButtonItem {
         
         customView = button
     }
-    
     
 }
