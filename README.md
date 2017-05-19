@@ -24,9 +24,9 @@ This library requires `iOS 7.0+`, `Swift 3` and `Xcode 8.0+`.
 
 Usage
 ==============
-1. Add Key `View controller-based status bar appearance` value `NO` to `info.plist`.
+####1. Add Key `View controller-based status bar appearance` value `NO` to `info.plist`.
 
-2. In your ViewController, override `shouldAutorotate`.
+####2. In your ViewController, override `shouldAutorotate`.
 
 ```swift
 override var shouldAutorotate : Bool {
@@ -34,7 +34,7 @@ override var shouldAutorotate : Bool {
 }
 ```
 
-3. Add YZPlayerView to play video.
+####3. Add YZPlayerView to play video.
 
 ```swift
 let video = YZVideo(play_address: "https://mu.mumov.com/videogHDk7k6vxjiahC0yPRAXBN3omu", title: "旅游丨柏林的符号学")
@@ -47,17 +47,17 @@ self.view.addSubview(playerView)
 playerView.play()
 ```
 
-4. Implements YZPlayerViewDelegate.
-- click `back` button
-	
+####4. Implements YZPlayerViewDelegate.
+  - click `back` button
+ 
 ```swift
 func backAction() {
     // _ = navigationController?.popViewController(animated: true)
 }
 ```
-	
-- click `like` button
-	
+
+  - click `like` button
+
 ```swift
 func likeAction(isLike: Bool) {
     // isLike ? print("like") : print("dislike")
