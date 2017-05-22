@@ -8,7 +8,7 @@ A simple video player for iOS, based on AVPlayer. Support the vertical, horizont
 
 Update: Swift 2.2 -> Swift 3.0 -> Swift 3.1
 
-<!--![Demo](https://raw.github.com/coolryze/YZPlayer/master/YZPlayerDemo/Demo.gif)-->
+![Demo](https://raw.github.com/coolryze/YZPlayer/master/YZPlayerDemo/Demo.gif)
 
 
 ## Features
@@ -74,10 +74,10 @@ func likeAction(isLike: Bool) {
 
 ## Picture demonstration
 
-<!--![Demo1](https://github.com/coolryze/YZPlayer/blob/master/YZPlayerDemo/Demo1.PNG?raw=true)
+![Demo1](https://github.com/coolryze/YZPlayer/blob/master/YZPlayerDemo/Demo1.PNG?raw=true)
 ![Demo2](https://github.com/coolryze/YZPlayer/blob/master/YZPlayerDemo/Demo2.PNG?raw=true)
 ![Demo3](https://github.com/coolryze/YZPlayer/blob/master/YZPlayerDemo/Demo3.PNG?raw=true)
--->
+
 
 ## License
 
